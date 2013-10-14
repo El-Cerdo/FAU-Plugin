@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "Add New Imagelink"
+msgstr "Add New Imagelink"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "All Imagelinks"
+msgstr "All Imagelinks"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "Edit Imagelink"
+msgstr "Edit Imagelink"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "Imagelink"
+msgstr "Imagelink"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "Imagelink information"
+msgstr "Imagelink information"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "New Imagelink"
+msgstr "New Imagelink"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "No Imagelinks found"
+msgstr "No Imagelinks found"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "No Imagelinks found in Trash"
+msgstr "No Imagelinks found in Trash"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "Parent Imagelink"
+msgstr "Parent Imagelink"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "Search imagelinks"
+msgstr "Search imagelinks"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "Update Imagelink"
+msgstr "Update Imagelink"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "View Imagelink"
+msgstr "View Imagelink"
+
+#. Text in function
+#: fau-posttype-imagelink.php:1
+msgid "imagelink"
+msgstr "imagelink"

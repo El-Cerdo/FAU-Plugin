@@ -1,13 +1,4 @@
 <?php
-/*
-Plugin Name: FAU Plugin
-Plugin URI: http://www.fau.de/
-Description: Widgets für die FAU-Website
-Author: medienreaktor
-Version: 1
-Author URI: http://www.medienreaktor.de/
-*/
-
 
 class Walker_Subpages_Menu extends Walker_Nav_Menu
 {
@@ -28,8 +19,6 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
 		$output .= $indent . '<div' . $id . $value . $class_names .'>';
-		
-		
 
 		$atts = array();
 		$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
@@ -37,6 +26,8 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 		$atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
 		$atts['href']   = ! empty( $item->url )        ? $item->url        : '';
 		$atts['class'] = 'subpage-item';
+		
+		$post = get_post($item->object_id);
 
 		$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
 		
@@ -49,7 +40,14 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 		}
 
 		$item_output = $args->before;
-		$item_output .= '<a'. $attributes .'>';
+		if($post->post_type == 'imagelink')
+		{
+			$item_output .= '<a href="http://'.get_field('link', $item->object_id).'">';
+		}
+		else
+		{
+			$item_output .= '<a'. $attributes .'>';
+		}
 		$item_output .= get_the_post_thumbnail($item->object_id, array(300,150));
 		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 		$item_output .= '</a>';
@@ -119,4 +117,4 @@ class FAUMenuSubpagesWidget extends WP_Widget
 }
 
 
-add_action( 'widgets_init', create_function('', 'return register_widget("FAUMenuSubpagesWidget");') );?>
+add_action( 'widgets_init', create_function('', 'return register_widget("FAUMenuSubpagesWidget");') );
