@@ -1,5 +1,22 @@
 <?php
 
+function persons_taxonomy() {
+	register_taxonomy(
+		'persons_category',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
+		'person',   		 //post type name
+		array(
+			'hierarchical' 		=> true,
+			'label' 			=> 'Kategorien',  //Display name
+			'query_var' 		=> true,
+			'rewrite'			=> array(
+					'slug' 			=> 'person', // This controls the base slug that will display before each term
+					'with_front' 	=> false // Don't display the category base before
+					)
+			)
+		);
+}
+add_action( 'init', 'persons_taxonomy');
+
 
 // Register Custom Post Type
 function person_post_type() {	
@@ -32,7 +49,7 @@ function person_post_type() {
 		'description'         => __( 'Person information', 'person' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'thumbnail', 'custom-fields', ),
-		'taxonomies'          => array( 'category', 'post_tag' ),
+		'taxonomies'          => array( 'persons_category' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,

@@ -1,5 +1,21 @@
 <?php
 
+function imagelink_taxonomy() {
+	register_taxonomy(
+		'imagelinks_category',  //The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
+		'imagelink',   		 //post type name
+		array(
+			'hierarchical' 		=> true,
+			'label' 			=> 'Kategorien',  //Display name
+			'query_var' 		=> true,
+			'rewrite'			=> array(
+					'slug' 			=> 'imagelink', // This controls the base slug that will display before each term
+					'with_front' 	=> false // Don't display the category base before
+					)
+			)
+		);
+}
+add_action( 'init', 'imagelink_taxonomy');
 
 // Register Custom Post Type
 function imagelink_post_type() {
@@ -26,7 +42,7 @@ function imagelink_post_type() {
 		'description'         => __( 'Imagelink information', 'imagelink' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'thumbnail', 'custom-fields', ),
-		'taxonomies'          => array( 'category', 'post_tag' ),
+		'taxonomies'          => array( 'imagelinks_category' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
