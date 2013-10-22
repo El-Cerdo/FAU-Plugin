@@ -41,7 +41,7 @@ function imagelink_post_type() {
 		'label'               => __( 'imagelink', 'imagelink' ),
 		'description'         => __( 'Imagelink information', 'imagelink' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'thumbnail', 'custom-fields', ),
+		'supports'            => array( 'title', 'thumbnail' ),
 		'taxonomies'          => array( 'imagelinks_category' ),
 		'hierarchical'        => false,
 		'public'              => true,

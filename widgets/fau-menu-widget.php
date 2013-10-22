@@ -42,7 +42,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 		$item_output = $args->before;
 		if($post->post_type == 'imagelink')
 		{
-			$item_output .= '<a href="http://'.get_field('link', $item->object_id).'">';
+			$item_output .= '<a href="'.get_field('protocol', $item->object_id).get_field('link', $item->object_id).'">';
 		}
 		else
 		{

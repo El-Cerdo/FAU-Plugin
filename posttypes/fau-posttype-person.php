@@ -48,7 +48,7 @@ function person_post_type() {
 		'label'               => __( 'person', 'person' ),
 		'description'         => __( 'Person information', 'person' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'thumbnail', 'custom-fields', ),
+		'supports'            => array( 'title', 'thumbnail' ),
 		'taxonomies'          => array( 'persons_category' ),
 		'hierarchical'        => false,
 		'public'              => true,
