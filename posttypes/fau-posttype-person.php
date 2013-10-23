@@ -6,7 +6,7 @@ function persons_taxonomy() {
 		'person',   		 //post type name
 		array(
 			'hierarchical' 		=> true,
-			'label' 			=> 'Kategorien',  //Display name
+			'label' 			=> 'Personen-Kategorien',  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
 					'slug' 			=> 'person', // This controls the base slug that will display before each term

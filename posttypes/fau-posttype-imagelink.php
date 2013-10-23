@@ -6,7 +6,7 @@ function imagelink_taxonomy() {
 		'imagelink',   		 //post type name
 		array(
 			'hierarchical' 		=> true,
-			'label' 			=> 'Kategorien',  //Display name
+			'label' 			=> 'Bildlink-Kategorien',  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
 					'slug' 			=> 'imagelink', // This controls the base slug that will display before each term
