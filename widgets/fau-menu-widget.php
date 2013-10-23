@@ -74,7 +74,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 			$item_output = $args->before;
 			if($post->post_type == 'imagelink')
 			{
-				$item_output .= '<a href="'.get_field('protocol', $item->object_id).get_field('link', $item->object_id).'">';
+				$item_output .= '<a'. $attributes .' href="'.get_field('protocol', $item->object_id).get_field('link', $item->object_id).'">';
 			}
 			else
 			{
@@ -111,7 +111,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 		
 		if($this->level == 1)
 		{
-			if($this->count[$this->level] % 4 == 0) $output .= '</div><div class="row">';
+			if($this->count[$this->level] % 4 == 0) $output .= '</div><div class="row subpages-menu">';
 		}
     }  
     
