@@ -7,7 +7,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 	private $element;
 	
 	function __construct() {
-	 	echo '<div class="row">';
+	 	echo '<div class="row subpages-menu">';
 	}
 	
 	function __destruct() {
