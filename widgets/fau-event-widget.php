@@ -235,7 +235,7 @@ class Event_Widget extends WP_Widget {
                         <?php foreach( $date_info['events'] as $category ): ?>
                             <?php foreach( $category as $event ): ?>
 								<?php $cat = get_the_terms($event->post_id, 'events_categories'); ?>
-                                <div class="event-id-<?php echo $event->post_id; ?>
+                                <div class="event-info event-id-<?php echo $event->post_id; ?>
 									<?php foreach($cat as $c) echo ' event-category-'.$c->slug; ?>
                                     <?php if( $event->allday ) echo 'event-allday'; ?>">
 									<?php if( ! $event->allday ): ?>
