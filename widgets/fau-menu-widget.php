@@ -106,7 +106,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 		}
 		elseif($this->level == 2 && $this->count[$this->level] == 5)
 		{
-			$output .= '<li><a href="'.$this->element->url.'">Mehr …</a></li>';
+			$output .= '<li class="more"><a href="'.$this->element->url.'">Mehr …</a></li>';
 		}
 		
 		if($this->level == 1)
