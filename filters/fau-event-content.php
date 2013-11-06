@@ -49,8 +49,7 @@ function event_single_view(&$event) {
     extract( $args );
     
     ?>
-    <a name="event"></a>
-    <table class="full-event single-event event-id-<?php echo $event->post_id ?> <?php if( $event->multiday ) echo 'multiday' ?> <?php if( $event->allday ) echo 'allday' ?>">
+    <table class="full-event event-meta single-event event-id-<?php echo $event->post_id ?> <?php if( $event->multiday ) echo 'multiday' ?> <?php if( $event->allday ) echo 'allday' ?>">
         <tbody>
             <tr>
                 <th scope="row"><?php _e( 'Wann:' ) ?></th>
@@ -79,17 +78,16 @@ function event_single_view(&$event) {
 
         </tbody>
     </table>
-    <p>
-        <a href="<?php echo esc_attr( $subscribe_url ) ?>"
-            title="<?php _e( 'Abonniere diesen Kalender in Ihrem bevorzugtem Programm (iCal, Outlook, etc.)' ) ?>" />
+<?php /*    <p>
+        <a href="<?php echo esc_attr( $subscribe_url ); ?>" title="<?php _e( 'Abonniere diesen Kalender in Ihrem bevorzugtem Programm (iCal, Outlook, etc.)' ) ?>">
             <?php _e( 'Abonniere' ) ?>
         </a>
-    </p>    
+    </p>    */ ?>
     <?php
 }
 
 function event_single_footer_view(&$event) {    
-    if( $event->ical_feed_url ): ?>
+  /*  if( $event->ical_feed_url ): ?>
     <p>
         <cite>
             <?php echo sprintf( __( 'Dieser Beitrag wurde aus einer externe <a href="%s" title="ICS-Kalender-Quelle">Kalender-Quelle</a> importiert.' ), esc_attr( str_replace( 'http://', 'webcal://', $event->ical_feed_url ) ) ) ?>
@@ -100,5 +98,5 @@ function event_single_footer_view(&$event) {
         <?php endif ?>
         </cite>
     </p>
-    <?php endif;
+    <?php endif; */
 }

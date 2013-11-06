@@ -258,11 +258,13 @@ class Event_Widget extends WP_Widget {
                     <?php endforeach; ?>
                     <li>
                         <div>               
-                        <?php if( $show_subscribe_buttons ): ?>
+                        <?php /*if( $show_subscribe_buttons ): ?>
                             <a href="<?php echo $subscribe_url; ?>" title="<?php _e( 'Abonniere diesen Kalender in Ihrem bevorzugtem Programm (iCal, Outlook, etc.)' ); ?>" />
                                 <?php _e( 'Abonniere diesen Kalender &raquo;' ); ?>
                             </a>
-                          <?php endif; ?>
+						<?php endif; */?>
+						<a href="<?php echo get_post_type_archive_link('event'); ?>"><?php _e( 'Mehr Veranstaltungen' ); ?></a>
+
                         </div>
                     </li>
                 </ul>
