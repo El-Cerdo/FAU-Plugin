@@ -72,4 +72,30 @@ function person_post_type() {
 // Hook into the 'init' action
 add_action( 'init', 'person_post_type', 0 );
 
+
+function person_restrict_manage_posts() {
+	global $typenow;
+
+	if( $typenow == "person" ){
+		$filters = get_object_taxonomies($typenow);
+		
+		foreach ($filters as $tax_slug) {
+			$tax_obj = get_taxonomy($tax_slug);
+			wp_dropdown_categories(array(
+                'show_option_all' => sprintf('Alle %s anzeigen', $tax_obj->label),
+                'taxonomy' => $tax_slug,
+                'name' => $tax_obj->name,
+                'orderby' => 'name',
+                'selected' => isset($_GET[$tax_slug]) ? $_GET[$tax_slug] : '',
+                'hierarchical' => $tax_obj->hierarchical,
+                'show_count' => true,
+                'hide_if_empty' => true
+            ));
+		}
+
+	}
+}
+add_action( 'restrict_manage_posts', 'person_restrict_manage_posts' );
+
+
 ?>
