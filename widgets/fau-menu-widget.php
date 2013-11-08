@@ -132,10 +132,16 @@ class FAUMenuSubpagesWidget extends WP_Widget
 
 	function form($instance)
 	{
-		$instance = wp_parse_args( (array) $instance, array( 'menu-slug' => '' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'menu-slug' => '', 'title' => '' ) );
 		$slug = $instance['menu-slug'];
+		$title = $instance['title'];
 		
 		$menus = get_terms('nav_menu');
+		
+		echo '<p>';
+			echo '<label for="'.$this->get_field_id('title').'">Titel: </label>';
+			echo '<input type="text" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" value="'.$title.'">';
+		echo '</p>';
 		
 		echo '<p>';
 			echo '<label for="'.$this->get_field_id('menu-slug').'">Menü: ';
@@ -156,6 +162,8 @@ class FAUMenuSubpagesWidget extends WP_Widget
 	{
 		$instance = $old_instance;
 		$instance['menu-slug'] = $new_instance['menu-slug'];
+		$instance['title'] = $new_instance['title'];
+		$instance['id'] = md5(time());
 		return $instance;
 	}
 
@@ -163,14 +171,18 @@ class FAUMenuSubpagesWidget extends WP_Widget
 	{
 		extract($args, EXTR_SKIP);
 
+		
+
 		echo $before_widget;
+		echo '<div class="portal-subpages-item" id="portal-subpages-item-'.$instance['id'].'">';
+		if(!empty($instance['title']))	echo '<a href="#portal-subpages-item-'.$instance['id'].'" class="hidden portal-subpages-item-title">'.$instance['title'].'</a>';
 		$slug = empty($instance['menu-slug']) ? ' ' : $instance['menu-slug'];
 
 		if (!empty($slug))
 		{
 			wp_nav_menu( array( 'menu' => $slug, 'container' => false, 'items_wrap' => '%3$s', 'link_before' => '', 'link_after' => '', 'walker' => new Walker_Subpages_Menu));
 		}
-		
+		echo '</div>';
 		echo $after_widget;
 	}
 }
