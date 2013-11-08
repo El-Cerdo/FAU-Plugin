@@ -83,7 +83,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 
 			if($this->level == 1)
 			{
-				$item_output .= get_the_post_thumbnail($item->object_id, array(300,150));
+				$item_output .= get_the_post_thumbnail($item->object_id, 'page-thumb');
 				if($post->post_type == 'imagelink')
 				{
 					$item_output .= '<div class="ext-icon"></div>';

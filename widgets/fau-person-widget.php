@@ -60,7 +60,7 @@ class FAUPersonWidget extends WP_Widget
 			
 			echo '<div class="person">';
 				if(!empty($title)) 					echo '<h2 class="small">'.$title.'</h2>';
-				echo get_the_post_thumbnail($id, array(300,150));
+				echo get_the_post_thumbnail($id, 'person-thumb');
 				echo '<h3>'.$post->post_title.'</h3>';
 				if(get_field('position', $id)) 		echo '<h4>'.get_field('position', $id).'</h4>';
 				if(get_field('phone', $id))			echo '<div class="person-info person-info-phone">'.get_field('phone', $id).'</div>';
