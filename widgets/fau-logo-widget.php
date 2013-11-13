@@ -28,7 +28,7 @@ class Walker_Logo_Menu extends Walker_Nav_Menu
 
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$classes[] = 'menu-item-' . $item->ID;
-			$classes[] = 'span3';
+			$classes[] = 'span2';
 
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
@@ -61,7 +61,7 @@ class Walker_Logo_Menu extends Walker_Nav_Menu
 			$item_output = $args->before;
 
 			$item_output .= '<a'. $attributes .' href="'.get_field('protocol', $item->object_id).get_field('link', $item->object_id).'">';
-			$item_output .= get_the_post_thumbnail($item->object_id, array(300,150));
+			$item_output .= get_the_post_thumbnail($item->object_id, 'logo-thumb');
 			$item_output .= '</a>';
 			$item_output .= $args->after;
 
@@ -121,6 +121,13 @@ class FAUMenuLogosWidget extends WP_Widget
 		extract($args, EXTR_SKIP);
 
 		echo $before_widget;
+		
+		echo '<div class="container">';
+			echo '<div class="logos-menu-nav">';
+				echo '<a id="logos-menu-prev" href="#">Zurück</a>';
+				echo '<a id="logos-menu-next" href="#">Weiter</a>';
+			echo '</div>';
+		echo '</div>';
 		$slug = empty($instance['menu-slug']) ? ' ' : $instance['menu-slug'];
 
 		if (!empty($slug))
