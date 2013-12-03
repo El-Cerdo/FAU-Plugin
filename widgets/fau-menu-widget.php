@@ -5,9 +5,11 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 	private $level = 1;
 	private $count = array();
 	private $element;
+	private $showdescription = FALSE;
 	
-	function __construct() {
+	function __construct($showdescription) {
 	 	echo '<div class="row subpages-menu">';
+		if($showdescription) $this->showdescription = TRUE;
 	}
 	
 	function __destruct() {
@@ -33,8 +35,8 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 		
 		if($this->level == 1) $this->element = $item;
 		
-		// Only show elements on the first level and only five on the second level
-		if($this->level == 1 || ($this->level == 2 && $this->count[$this->level] <= 4))
+		// Only show elements on the first level and only five on the second level, but only if showdescription == FALSE
+		if($this->level == 1 || ($this->level == 2 && $this->count[$this->level] <= 4 && $this->showdescription == FALSE))
 		{
 			$class_names = $value = '';
 
@@ -97,6 +99,11 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 
 			$item_output .= '</a>';
 			$item_output .= $args->after;
+			
+			if($this->showdescription && $this->level == 1 && get_field('portal_description', $item->object_id))
+			{
+				$item_output .= '<p>'.get_field('portal_description', $item->object_id).'</p>';
+			}
 		}
 
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
@@ -108,7 +115,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 			if($this->level == 1) $output .= "</div>\n";  
 			else $output .= "</li>\n";
 		}
-		elseif($this->level == 2 && $this->count[$this->level] == 5)
+		elseif($this->level == 2 && $this->count[$this->level] == 5 && $this->showdescription == FALSE)
 		{
 			$output .= '<li class="more"><a href="'.$this->element->url.'">Mehr …</a></li>';
 		}
@@ -132,9 +139,10 @@ class FAUMenuSubpagesWidget extends WP_Widget
 
 	function form($instance)
 	{
-		$instance = wp_parse_args( (array) $instance, array( 'menu-slug' => '', 'title' => '' ) );
+		$instance = wp_parse_args( (array) $instance, array( 'menu-slug' => '', 'title' => '', 'showdescription' => FALSE ) );
 		$slug = $instance['menu-slug'];
 		$title = $instance['title'];
+		$showdescription = $instance['showdescription'];
 		
 		$menus = get_terms('nav_menu');
 		
@@ -155,6 +163,13 @@ class FAUMenuSubpagesWidget extends WP_Widget
 				echo '</select>';
 			echo '</label>';
 		echo '</p>';
+		
+		echo '<p>';
+			echo '<label for="'.$this->get_field_id('showdescription').'">Beschreibung anzeigen: </label>';
+			echo '<input type="checkbox" id="'.$this->get_field_id('showdescription').'" name="'.$this->get_field_name('showdescription').'" value="TRUE" ';
+				if($showdescription) echo 'checked';
+			echo '>';
+		echo '</p>';
 
 	}
 
@@ -163,6 +178,7 @@ class FAUMenuSubpagesWidget extends WP_Widget
 		$instance = $old_instance;
 		$instance['menu-slug'] = $new_instance['menu-slug'];
 		$instance['title'] = $new_instance['title'];
+		$instance['showdescription'] = $new_instance['showdescription'];
 		$instance['id'] = md5(time());
 		return $instance;
 	}
@@ -171,16 +187,15 @@ class FAUMenuSubpagesWidget extends WP_Widget
 	{
 		extract($args, EXTR_SKIP);
 
-		
-
 		echo $before_widget;
 		echo '<div class="portal-subpages-item" id="portal-subpages-item-'.$instance['id'].'">';
 		if(!empty($instance['title']))	echo '<a href="#portal-subpages-item-'.$instance['id'].'" class="hidden portal-subpages-item-title">'.$instance['title'].'</a>';
 		$slug = empty($instance['menu-slug']) ? ' ' : $instance['menu-slug'];
+		$showdescription = $instance['showdescription'];
 
 		if (!empty($slug))
 		{
-			wp_nav_menu( array( 'menu' => $slug, 'container' => false, 'items_wrap' => '%3$s', 'link_before' => '', 'link_after' => '', 'walker' => new Walker_Subpages_Menu));
+			wp_nav_menu( array( 'menu' => $slug, 'container' => false, 'items_wrap' => '%3$s', 'link_before' => '', 'link_after' => '', 'walker' => new Walker_Subpages_Menu($showdescription)));
 		}
 		echo '</div>';
 		echo $after_widget;
