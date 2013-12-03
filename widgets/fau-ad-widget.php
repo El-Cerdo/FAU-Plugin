@@ -43,6 +43,7 @@ class FAUAdWidget extends WP_Widget
 		extract($args, EXTR_SKIP);
 
 		echo $before_widget;
+		echo '<div class="banner-ad">';
 		$id = empty($instance['id']) ? ' ' : $instance['id'];
 
 		if (!empty($id))
@@ -53,7 +54,7 @@ class FAUAdWidget extends WP_Widget
 				echo get_the_post_thumbnail($id, 'full');
 			if(get_field('link', $id))	echo '</a>';
 		}
-		
+		echo '</div>';
 		echo $after_widget;
 	}
 }
