@@ -18,5 +18,6 @@ require_once('widgets/fau-person-widget.php');
 require_once('widgets/fau-ad-widget.php');
 require_once('widgets/fau-logo-widget.php');
 require_once('widgets/fau-event-widget.php');
+require_once('widgets/fau-tagcloud-widget.php');
 
 require_once('filters/fau-event-content.php');
