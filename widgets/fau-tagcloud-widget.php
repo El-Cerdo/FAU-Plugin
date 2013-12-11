@@ -123,11 +123,12 @@ class FAUMenuTagcloudWidget extends WP_Widget
 		extract($args, EXTR_SKIP);
 
 		echo $before_widget;
+		
+		if(!empty($instance['title']))	echo '<h2 class="small">'.$instance['title'].'</h2>';
+		
 		echo '<ul class="tagcloud">';
 		
 		$slug = empty($instance['menu-slug']) ? ' ' : $instance['menu-slug'];
-
-		if(!empty($instance['title']))	echo '<h2 class="small">'.$instance['title'].'</h2>';
 
 		if (!empty($slug))
 		{
