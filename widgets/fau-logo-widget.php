@@ -135,6 +135,8 @@ class FAUMenuLogosWidget extends WP_Widget
 			wp_nav_menu( array( 'menu' => $slug, 'container' => false, 'items_wrap' => '%3$s', 'link_before' => '', 'link_after' => '', 'walker' => new Walker_Logo_Menu));
 		}
 		
+		echo '<div class="container"><a id="logos-menu-playpause" href="#"><span class="play">Abspielen</span><span class="pause">Pause</span></a></div>';
+		
 		echo $after_widget;
 	}
 }
