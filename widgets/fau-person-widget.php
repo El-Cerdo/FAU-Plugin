@@ -17,6 +17,15 @@ class FAUPersonWidget extends WP_Widget
 		
 		$persons = query_posts('post_type=person');
 		
+		if($item->post_title)
+		{
+			$name = $item->post_title;
+		}
+		else
+		{
+			$name = $this->get_field_id('firstname').' '.$this->get_field_id('lastname');
+		}
+		
 		echo '<p>';
 			echo '<label for="'.$this->get_field_id('title').'">Titel: ';
 				echo '<input type="text" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" value="'.attribute_escape($title).'" />';
