@@ -31,8 +31,8 @@ class Event_Widget extends WP_Widget {
         
         $instance = wp_parse_args((array) $instance, $default);
 
-        $events_categories = get_terms('events_categories', array('orderby' => 'name', "hide_empty" => false));
-        $events_tags = get_terms('events_tags', array('orderby' => 'name', "hide_empty" => false));
+        $events_categories = get_terms('event_category', array('orderby' => 'name', "hide_empty" => false));
+        $events_tags = get_terms('event_tag', array('orderby' => 'name', "hide_empty" => false));
         $get_events = new WP_Query(array('post_type' => EVENT_POST_TYPE, 'posts_per_page' => -1));
         $events_options = $get_events->posts;
 
@@ -234,7 +234,7 @@ class Event_Widget extends WP_Widget {
                         </div>
                         <?php foreach( $date_info['events'] as $category ): ?>
                             <?php foreach( $category as $event ): ?>
-								<?php $cat = get_the_terms($event->post_id, 'events_categories'); ?>
+								<?php $cat = get_the_terms($event->post_id, 'event_category'); ?>
                                 <div class="event-info event-id-<?php echo $event->post_id; ?>
 									<?php foreach($cat as $c) echo ' event-category-'.$c->slug; ?>
                                     <?php if( $event->allday ) echo 'event-allday'; ?>">
