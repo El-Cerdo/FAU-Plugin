@@ -67,14 +67,30 @@ class FAUPersonWidget extends WP_Widget
 		{
 			$post = get_post($id);
 			
+			
 			echo '<div class="person">';
 				if(!empty($title)) 					echo '<h2 class="small">'.$title.'</h2>';
-				echo get_the_post_thumbnail($id, 'person-thumb');
-				echo '<h3>'.$post->post_title.'</h3>';
-				if(get_field('position', $id)) 		echo '<h4>'.get_field('position', $id).'</h4>';
-				if(get_field('phone', $id))			echo '<div class="person-info person-info-phone">'.get_field('phone', $id).'</div>';
-				if(get_field('fax', $id))			echo '<div class="person-info person-info-fax">'.get_field('fax', $id).'</div>';
-				if(get_field('email', $id))			echo '<div class="person-info person-info-email"><a href="mailto:'.get_field('email', $id).'">'.get_field('email', $id).'</a></div>';
+				
+				echo '<div class="row">';
+				
+					echo '<div class="span1">';
+						echo get_the_post_thumbnail($id, 'person-thumb');
+					echo '</div>';
+					
+					echo '<div class="span3">';
+						echo '<h3>'.$post->post_title.'</h3>';
+						if(get_field('position', $id)) 		echo '<h4>'.get_field('position', $id).'</h4>';
+						if(get_field('phone', $id))			echo '<div class="person-info person-info-phone">'.get_field('phone', $id).'</div>';
+						if(get_field('fax', $id))			echo '<div class="person-info person-info-fax">'.get_field('fax', $id).'</div>';
+						if(get_field('email', $id))			echo '<div class="person-info person-info-email"><a href="mailto:'.get_field('email', $id).'">'.get_field('email', $id).'</a></div>';
+						if(get_field('webseite', $id))		echo '<div class="person-info person-info-www"><a href="http://'.get_field('webseite', $id).'">'.get_field('webseite', $id).'</a></div>';
+						if(get_field('adresse', $id))		echo '<div class="person-info person-info-address">'.get_field('adresse', $id).'</div>';
+						if(get_field('raum', $id))			echo '<div class="person-info person-info-room">'.get_field('raum', $id).'</div>';
+						//	if(get_field('freitext', $id))		echo '<div class="person-info person-info-description">'.get_field('freitext', $id).'</div>';
+						
+					echo '</div>';
+				echo '</div>';
+			
 			echo '</div>';
 		}
 		
