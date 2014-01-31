@@ -73,9 +73,12 @@ class FAUPersonWidget extends WP_Widget
 				
 				echo '<div class="row">';
 				
-					echo '<div class="span1">';
-						echo get_the_post_thumbnail($id, 'person-thumb');
-					echo '</div>';
+					if(has_post_thumbnail($id))
+					{
+						echo '<div class="span1">';
+							echo get_the_post_thumbnail($id, 'person-thumb');
+						echo '</div>';
+					}
 					
 					echo '<div class="span3">';
 						echo '<h3>'.$post->post_title.'</h3>';
