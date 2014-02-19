@@ -15,7 +15,8 @@ class FAUPersonWidget extends WP_Widget
 		$id = $instance['id'];
 		$title = $instance['title'];
 		
-		$persons = query_posts('post_type=person');
+		//$persons = query_posts('post_type=person');
+		$persons = get_posts(array('post_type' => 'person', 'posts_per_page' => 9999));
 		
 		if($item->post_title)
 		{
