@@ -36,7 +36,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 		if($this->level == 1) $this->element = $item;
 		
 		// Only show elements on the first level and only five on the second level, but only if showdescription == FALSE
-		if($this->level == 1 || ($this->level == 2 && $this->count[$this->level] <= 4 && $this->showdescription == FALSE))
+		if($this->level == 1 || ($this->level == 2 && $this->count[$this->level] <= 5 && $this->showdescription == FALSE))
 		{
 			$class_names = $value = '';
 
@@ -110,12 +110,12 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 	}
 	
 	function end_el(&$output, $item, $depth=0, $args=array()) {      
-		if($this->level == 1 || ($this->level == 2 && $this->count[$this->level] <= 4))
+		if($this->level == 1 || ($this->level == 2 && $this->count[$this->level] <= 5))
 		{
 			if($this->level == 1) $output .= "</div>\n";  
 			else $output .= "</li>\n";
 		}
-		elseif($this->level == 2 && $this->count[$this->level] == 5 && $this->showdescription == FALSE)
+		elseif($this->level == 2 && $this->count[$this->level] == 6 && $this->showdescription == FALSE)
 		{
 			$output .= '<li class="more"><a href="'.$this->element->url.'">Mehr …</a></li>';
 		}
