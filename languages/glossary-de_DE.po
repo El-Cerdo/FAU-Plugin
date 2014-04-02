@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "Add New Glossary item"
+msgstr "Glossar-Eintrag hinzufügen"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "All Glossary items"
+msgstr "Alle Glossar-Einträge"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "Edit item"
+msgstr "Eintrag bearbeiten"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "Glossary"
+msgstr "Glossar"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "Glossary information"
+msgstr "Glossar-Informationen"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "New Glossary item"
+msgstr "Neuer Glossar-Eintrag"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "No Glossary items found"
+msgstr "Keine Glossar-Einträge gefunden"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "No Glossary items found in Trash"
+msgstr "Keine Glossar-Einträge im Papierkorb gefunden"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "Parent item"
+msgstr "Übergeordneter Eintrag"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "Search Glossary items"
+msgstr "Glossar-Eintrag suchen"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "Update item"
+msgstr "Eintrag aktualisieren"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "View item"
+msgstr "Eintrag anzeigen"
+
+#. Text in function
+#: fau-posttype-glossary.php:1
+msgid "glossary"
+msgstr "Glossar"
