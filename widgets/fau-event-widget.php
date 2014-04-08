@@ -222,19 +222,23 @@ class Event_Widget extends WP_Widget {
             <?php else: ?>
                 <ul>
                     <?php foreach( $dates as $timestamp => $date_info ): ?>
-                    <li<?php if( isset( $date_info['today'] ) && $date_info['today'] ) echo ' class="event-today"'; ?>>
-                        <div class="event-date">
-                            <?php /* echo date_i18n( get_option( 'date_format' ), $timestamp, true ) */?>
-							<div class="event-date-month">
-								<?php echo date_i18n('M', $timestamp, TRUE); ?>
-							</div>
-							<div class="event-date-day">
-								<?php echo date_i18n('d', $timestamp, TRUE); ?>
-							</div>
-                        </div>
+                        
                         <?php foreach( $date_info['events'] as $category ): ?>
                             <?php foreach( $category as $event ): ?>
+							
+								<li<?php if( isset( $date_info['today'] ) && $date_info['today'] ) echo ' class="event-today"'; ?>>
+			                    
 								<?php $cat = get_the_terms($event->post_id, 'event_category'); ?>
+								
+								<div class="event-date <?php foreach($cat as $c) echo ' event-category-'.$c->slug; ?>">
+		                            <?php /* echo date_i18n( get_option( 'date_format' ), $timestamp, true ) */?>
+									<div class="event-date-month">
+										<?php echo date_i18n('M', $timestamp, TRUE); ?>
+									</div>
+									<div class="event-date-day">
+										<?php echo date_i18n('d', $timestamp, TRUE); ?>
+									</div>
+		                        </div>
                                 <div class="event-info event-id-<?php echo $event->post_id; ?>
 									<?php foreach($cat as $c) echo ' event-category-'.$c->slug; ?>
                                     <?php if( $event->allday ) echo 'event-allday'; ?>">
@@ -252,9 +256,11 @@ class Event_Widget extends WP_Widget {
                                         <?php endif; ?>
 									</div>
                                 </div>
+
+								</li>
                             <?php endforeach; ?>
                         <?php endforeach; ?>
-                    </li>
+                    
                     <?php endforeach; ?>
                     <li>
                         <div class="events-more-links">               
