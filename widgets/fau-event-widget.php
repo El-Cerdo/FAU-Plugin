@@ -226,11 +226,14 @@ class Event_Widget extends WP_Widget {
                         <?php foreach( $date_info['events'] as $category ): ?>
                             <?php foreach( $category as $event ): ?>
 							
-								<li<?php if( isset( $date_info['today'] ) && $date_info['today'] ) echo ' class="event-today"'; ?>>
+								<li class="
+									<?php foreach($cat as $c) echo ' event-category-'.$c->slug; ?>
+									<?php if( isset( $date_info['today'] ) && $date_info['today'] ) echo ' event-today'; ?>
+								">
 			                    
 								<?php $cat = get_the_terms($event->post_id, 'event_category'); ?>
 								
-								<div class="event-date <?php foreach($cat as $c) echo ' event-category-'.$c->slug; ?>">
+								<div class="event-date">
 		                            <?php /* echo date_i18n( get_option( 'date_format' ), $timestamp, true ) */?>
 									<div class="event-date-month">
 										<?php echo date_i18n('M', $timestamp, TRUE); ?>
@@ -240,7 +243,6 @@ class Event_Widget extends WP_Widget {
 									</div>
 		                        </div>
                                 <div class="event-info event-id-<?php echo $event->post_id; ?>
-									<?php foreach($cat as $c) echo ' event-category-'.$c->slug; ?>
                                     <?php if( $event->allday ) echo 'event-allday'; ?>">
 									<?php if( ! $event->allday ): ?>
                                         <div class="event-time"><?php echo esc_html( sprintf( __( '%s Uhr bis %s Uhr' ), $event->start_time, $event->end_time ) ) ?></div>
