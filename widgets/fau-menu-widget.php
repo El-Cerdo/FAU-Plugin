@@ -57,7 +57,11 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 			$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
 			$atts['target'] = ! empty( $item->target )     ? $item->target     : '';
 			$atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
-			$atts['href']   = ! empty( $item->url )        ? $item->url        : '';
+			
+			if($post->post_type != 'imagelink')
+			{
+				$atts['href']   = ! empty( $item->url )        ? $item->url        : '';
+			}
 
 			if($this->level == 1) $atts['class'] = 'subpage-item';
 
