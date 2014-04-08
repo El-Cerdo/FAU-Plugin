@@ -60,7 +60,7 @@ class Walker_Logo_Menu extends Walker_Nav_Menu
 
 			$item_output = $args->before;
 
-			$item_output .= '<a'. $attributes .' href="'.get_field('protocol', $item->object_id).get_field('link', $item->object_id).'">';
+			$item_output .= '<a class="logo-item" href="'.get_field('protocol', $item->object_id).get_field('link', $item->object_id).'">';
 			$item_output .= get_the_post_thumbnail($item->object_id, 'logo-thumb');
 			$item_output .= '</a>';
 			$item_output .= $args->after;
