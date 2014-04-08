@@ -69,39 +69,41 @@ class FAUPersonWidget extends WP_Widget
 			$post = get_post($id);
 			
 			
-			echo '<div class="person">';
-				if(!empty($title)) 					echo '<h2 class="small">'.$title.'</h2>';
+			$content = '<div class="person">';
+				if(!empty($title)) 					$content .= '<h2 class="small">'.$title.'</h2>';
 				
-				echo '<div class="row">';
+				$content .= '<div class="row">';
 				
 					if(has_post_thumbnail($id))
 					{
-						echo '<div class="span1">';
-							echo get_the_post_thumbnail($id, 'person-thumb');
-						echo '</div>';
+						$content .= '<div class="span1">';
+							$content .= get_the_post_thumbnail($id, 'person-thumb');
+						$content .= '</div>';
 					}
 					
-					echo '<div class="span3">';
-						echo '<h3>';
-							if(get_field('title', $id)) 	echo get_field('title', $id).' ';
-							if(get_field('firstname', $id)) 	echo get_field('firstname', $id).' ';
-							if(get_field('lastname', $id)) 		echo get_field('lastname', $id);
-						echo '</h3>';
-						if(get_field('position', $id)) 		echo '<h4>'.get_field('position', $id).'</h4>';
-						if(get_field('institution', $id))			echo '<div class="person-info person-info-institution">'.get_field('institution', $id).'</div>';
-						if(get_field('phone', $id))			echo '<div class="person-info person-info-phone">'.get_field('phone', $id).'</div>';
-						if(get_field('fax', $id))			echo '<div class="person-info person-info-fax">'.get_field('fax', $id).'</div>';
-						if(get_field('email', $id))			echo '<div class="person-info person-info-email"><a href="mailto:'.get_field('email', $id).'">'.get_field('email', $id).'</a></div>';
-						if(get_field('webseite', $id))		echo '<div class="person-info person-info-www"><a href="http://'.get_field('webseite', $id).'">'.get_field('webseite', $id).'</a></div>';
-						if(get_field('adresse', $id))		echo '<div class="person-info person-info-address">'.get_field('adresse', $id).'</div>';
-						if(get_field('raum', $id))			echo '<div class="person-info person-info-room">Raum '.get_field('raum', $id).'</div>';
-						if(get_field('freitext', $id))		echo '<div class="person-info person-info-description">'.get_field('freitext', $id).'</div>';
+					$content .= '<div class="span3">';
+						$content .= '<h3>';
+							if(get_field('title', $id)) 	$content .= get_field('title', $id).' ';
+							if(get_field('firstname', $id)) 	$content .= get_field('firstname', $id).' ';
+							if(get_field('lastname', $id)) 		$content .= get_field('lastname', $id);
+						$content .= '</h3>';
+						if(get_field('position', $id)) 		$content .= '<h4>'.get_field('position', $id).'</h4>';
+						if(get_field('institution', $id))			$content .= '<div class="person-info person-info-institution">'.get_field('institution', $id).'</div>';
+						if(get_field('phone', $id))			$content .= '<div class="person-info person-info-phone">'.get_field('phone', $id).'</div>';
+						if(get_field('fax', $id))			$content .= '<div class="person-info person-info-fax">'.get_field('fax', $id).'</div>';
+						if(get_field('email', $id))			$content .= '<div class="person-info person-info-email"><a href="mailto:'.get_field('email', $id).'">'.get_field('email', $id).'</a></div>';
+						if(get_field('webseite', $id))		$content .= '<div class="person-info person-info-www"><a href="http://'.get_field('webseite', $id).'">'.get_field('webseite', $id).'</a></div>';
+						if(get_field('adresse', $id))		$content .= '<div class="person-info person-info-address">'.get_field('adresse', $id).'</div>';
+						if(get_field('raum', $id))			$content .= '<div class="person-info person-info-room">Raum '.get_field('raum', $id).'</div>';
+						if(get_field('freitext', $id))		$content .= '<div class="person-info person-info-description">'.get_field('freitext', $id).'</div>';
 						
-					echo '</div>';
-				echo '</div>';
+					$content .= '</div>';
+				$content .= '</div>';
 			
-			echo '</div>';
+			$content .= '</div>';
 		}
+		
+		echo $content;
 		
 		echo $after_widget;
 	}
