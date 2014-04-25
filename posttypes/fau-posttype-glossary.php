@@ -61,7 +61,7 @@ function glossary_post_type() {
 		'has_archive'         => true,
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
-		'query_var'           => 'synonym',
+		'query_var'           => 'glossary',
 		'rewrite'             => $rewrite,
 		'capability_type'     => 'page',
 	);
