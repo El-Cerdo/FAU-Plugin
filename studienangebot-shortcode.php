@@ -66,7 +66,7 @@ function studienangebot($atts) {
                 <label for="semester-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
             </p>
         <?php endforeach; ?>
-        <h3>Studienort></h3>
+        <h3>Studienort</h3>
         <?php $terms = get_terms('studienort', array('pad_counts' => true, 'hide_empty' => 1)); ?>
         <?php foreach ($terms as $term): ?>
             <p>
