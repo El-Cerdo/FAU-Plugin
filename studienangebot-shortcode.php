@@ -10,7 +10,91 @@ function studienangebot($atts) {
     $abschlussgruppe = FAU_Studienangebot::get_abschlussgruppe();
     $the_permalink = get_permalink();
 
-    if (( $_SERVER['REQUEST_METHOD'] == 'GET' ) && isset($_GET['said'])) {
+
+    ob_start();
+    ?>
+
+	<div class="row">
+	<div class="span3">
+    <style>
+        #studienangebot label { 
+            float: none !important; 
+            display: inline !important;
+        } 
+        #studienangebot br { 
+            display: none;
+        }
+    </style>
+    <form id="studienangebot" action="<?php $the_permalink; ?>" method="get">
+        <input type="hidden" name="sasu" value="1">
+
+        <h3>Studiengang</h3>
+        <?php $terms = get_terms('studiengang', array('pad_counts' => true, 'hide_empty' => 1)); ?>
+        <p>
+            <select name="sasg" id="studiengang_category">
+                <option value="0">Alle Studiengänge</option>
+                <?php foreach ($terms as $term): ?>
+                    <option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </p>
+        <h3>Fächergruppe</h3>
+        <?php $terms = get_terms('faechergruppe', array('pad_counts' => true, 'hide_empty' => 1)); ?>
+        <?php foreach ($terms as $term): ?>
+            <p>
+                <input type="checkbox" name="safg<?php echo $term->term_id; ?>" value="1" id="faechergruppe-<?php echo $term->term_id; ?>">
+                <label for="faechergruppe-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
+            </p>
+        <?php endforeach; ?>
+        <h3>Abschluss</h3>
+
+        <?php foreach ($abschluss as $key => $terms): ?>
+            <h4><?php echo $abschlussgruppe[$key]; ?></h4>
+            <?php foreach ($terms as $term): ?>
+                <p>
+                    <input type="checkbox" name="saab<?php echo $term->term_id; ?>" value="1" id="abschluss-<?php echo $term->term_id; ?>">
+                    <label for="abschluss-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
+                </p>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+
+        <h3>Studienbeginn</h3>
+        <?php $terms = get_terms('semester', array('pad_counts' => true, 'hide_empty' => 1)); ?>
+        <?php foreach ($terms as $term): ?>
+            <p>
+                <input type="checkbox" name="sase<?php echo $term->term_id; ?>" value="1" id="semester-<?php echo $term->term_id; ?>">
+                <label for="semester-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
+            </p>
+        <?php endforeach; ?>
+        <h3>Studienort></h3>
+        <?php $terms = get_terms('studienort', array('pad_counts' => true, 'hide_empty' => 1)); ?>
+        <?php foreach ($terms as $term): ?>
+            <p>
+                <input type="checkbox" name="saso<?php echo $term->term_id; ?>" value="1" id="studienort-<?php echo $term->term_id; ?>">
+                <label for="studienort-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
+            </p>
+        <?php endforeach; ?>
+        <h3>Weitere Eigenschaften</h3>
+        <?php $terms = get_terms('saattribut', array('pad_counts' => true, 'hide_empty' => 1)); ?>
+        <?php foreach ($terms as $term): ?>
+            <p>
+                <input type="checkbox" name="saat<?php echo $term->term_id; ?>" value="1" id="saattribut-<?php echo $term->term_id; ?>">
+                <label for="saattribut-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
+            </p>
+        <?php endforeach; ?>                
+        <p>
+            <input type="submit" value="Auswählen">
+        </p>
+    </form>
+</div>
+
+    <?php
+    $out = ob_get_clean();
+	echo $out;
+	
+	echo '<div class="span9">';
+
+	if (( $_SERVER['REQUEST_METHOD'] == 'GET' ) && isset($_GET['said'])) {
 
         $post_id = (int) $_GET['said'];
         $post = get_post($post_id);
@@ -337,78 +421,7 @@ function studienangebot($atts) {
         if (isset($abschluesse[$key]))
             $abschluss[$key] = $abschluesse[$key];
     }
-    ob_start();
-    ?>
-    <style>
-        #studienangebot label { 
-            float: none !important; 
-            display: inline !important;
-        } 
-        #studienangebot br { 
-            display: none;
-        }
-    </style>
-    <form id="studienangebot" action="<?php $the_permalink; ?>" method="get">
-        <input type="hidden" name="sasu" value="1">
 
-        <h3>Studiengang</h3>
-        <?php $terms = get_terms('studiengang', array('pad_counts' => true, 'hide_empty' => 1)); ?>
-        <p>
-            <select name="sasg" id="studiengang_category">
-                <option value="0">Alle Studiengänge</option>
-                <?php foreach ($terms as $term): ?>
-                    <option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
-                <?php endforeach; ?>
-            </select>
-        </p>
-        <h3>Fächergruppe</h3>
-        <?php $terms = get_terms('faechergruppe', array('pad_counts' => true, 'hide_empty' => 1)); ?>
-        <?php foreach ($terms as $term): ?>
-            <p>
-                <input type="checkbox" name="safg<?php echo $term->term_id; ?>" value="1" id="faechergruppe-<?php echo $term->term_id; ?>">
-                <label for="faechergruppe-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
-            </p>
-        <?php endforeach; ?>
-        <h3>Abschluss</h3>
-
-        <?php foreach ($abschluss as $key => $terms): ?>
-            <h4><?php echo $abschlussgruppe[$key]; ?></h4>
-            <?php foreach ($terms as $term): ?>
-                <p>
-                    <input type="checkbox" name="saab<?php echo $term->term_id; ?>" value="1" id="abschluss-<?php echo $term->term_id; ?>">
-                    <label for="abschluss-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
-                </p>
-            <?php endforeach; ?>
-        <?php endforeach; ?>
-
-        <h3>Studienbeginn</h3>
-        <?php $terms = get_terms('semester', array('pad_counts' => true, 'hide_empty' => 1)); ?>
-        <?php foreach ($terms as $term): ?>
-            <p>
-                <input type="checkbox" name="sase<?php echo $term->term_id; ?>" value="1" id="semester-<?php echo $term->term_id; ?>">
-                <label for="semester-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
-            </p>
-        <?php endforeach; ?>
-        <h3>Studienort></h3>
-        <?php $terms = get_terms('studienort', array('pad_counts' => true, 'hide_empty' => 1)); ?>
-        <?php foreach ($terms as $term): ?>
-            <p>
-                <input type="checkbox" name="saso<?php echo $term->term_id; ?>" value="1" id="studienort-<?php echo $term->term_id; ?>">
-                <label for="studienort-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
-            </p>
-        <?php endforeach; ?>
-        <h3>Weitere Eigenschaften</h3>
-        <?php $terms = get_terms('saattribut', array('pad_counts' => true, 'hide_empty' => 1)); ?>
-        <?php foreach ($terms as $term): ?>
-            <p>
-                <input type="checkbox" name="saat<?php echo $term->term_id; ?>" value="1" id="saattribut-<?php echo $term->term_id; ?>">
-                <label for="saattribut-<?php echo $term->term_id; ?>"><?php echo $term->name; ?></label>
-            </p>
-        <?php endforeach; ?>                
-        <p>
-            <input type="submit" value="Auswählen">
-        </p>
-    </form>
-    <?php
-    return ob_get_clean();
+	echo '</div></div>';
+	return;
 }
