@@ -92,7 +92,7 @@ function studienangebot($atts) {
     $out = ob_get_clean();
 	echo $out;
 	
-	echo '<div class="span9">';
+	echo '<div class="span9"><div id="studienangebot-result">';
 
 	if (( $_SERVER['REQUEST_METHOD'] == 'GET' ) && isset($_GET['said'])) {
 
@@ -422,6 +422,6 @@ function studienangebot($atts) {
             $abschluss[$key] = $abschluesse[$key];
     }
 
-	echo '</div></div>';
+	echo '</div></div></div>';
 	return;
 }
