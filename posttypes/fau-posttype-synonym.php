@@ -63,7 +63,7 @@ function synonym_post_type() {
 		'publicly_queryable'  => true,
 		'query_var'           => 'synonym',
 		'rewrite'             => $rewrite,
-		'capability_type'     => 'page',
+		'capability_type'     => 'synonym',
 	);
 	register_post_type( 'synonym', $args );
 

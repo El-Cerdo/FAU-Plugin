@@ -63,7 +63,7 @@ function glossary_post_type() {
 		'publicly_queryable'  => true,
 		'query_var'           => 'glossary',
 		'rewrite'             => $rewrite,
-		'capability_type'     => 'page',
+		'capability_type'     => 'glossary',
 	);
 	register_post_type( 'glossary', $args );
 

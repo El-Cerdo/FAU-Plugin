@@ -63,7 +63,7 @@ function person_post_type() {
 		'publicly_queryable'  => true,
 		'query_var'           => 'person',
 		'rewrite'             => $rewrite,
-		'capability_type'     => 'page',
+		'capability_type'     => 'person',
 	);
 	register_post_type( 'person', $args );
 

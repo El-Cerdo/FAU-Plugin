@@ -56,7 +56,7 @@ function imagelink_post_type() {
 		'publicly_queryable'  => true,
 		'query_var'           => 'imagelink',
 		'rewrite'             => false,
-		'capability_type'     => 'page',
+		'capability_type'     => 'imagelink',
 	);
 	register_post_type( 'imagelink', $args );
 
