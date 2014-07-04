@@ -63,7 +63,7 @@ function ad_post_type() {
 		'publicly_queryable'  => true,
 		'query_var'           => 'ad',
 		'rewrite'             => $rewrite,
-		'capability_type'     => 'page',
+		'capability_type'     => 'ad',
 	);
 	register_post_type( 'ad', $args );
 
