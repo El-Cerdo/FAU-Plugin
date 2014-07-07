@@ -20,6 +20,7 @@ class Event_Widget extends WP_Widget {
         $default = array(
             'title' => __('Nächste Termine'),
             'events_per_page' => 5,
+            'subscribe_link' => -1,
             'show_subscribe_buttons' => true,
             'limit_by_cat' => false,
             'limit_by_tag' => false,
@@ -39,6 +40,7 @@ class Event_Widget extends WP_Widget {
         $fields = array(
             'title' => array('value' => $instance['title']),
             'events_per_page' => array('value' => $instance['events_per_page']),
+            'subscribe_link' => array('value' => $instance['subscribe_link']),
             'show_subscribe_buttons' => array('value' => $instance['show_subscribe_buttons']),
             'limit_by_cat' => array('value' => $instance['limit_by_cat']),
             'limit_by_tag' => array('value' => $instance['limit_by_tag']),
@@ -61,8 +63,9 @@ class Event_Widget extends WP_Widget {
             $fields[$field]['name'] = $this->get_field_name($field);
             $fields[$field]['value'] = $data['value'];
             
-            if (isset($data['options']))
+            if (isset($data['options'])) {
                 $fields[$field]['options'] = $data['options'];
+            }
         }
 
         $this->display_widget_form($fields);
@@ -73,9 +76,11 @@ class Event_Widget extends WP_Widget {
         
         $instance['title'] = strip_tags($new_instance['title']);
         $instance['events_per_page'] = intval($new_instance['events_per_page']);
-        if ($instance['events_per_page'] < 1)
+        if ($instance['events_per_page'] < 1) {
             $instance['events_per_page'] = 1;
+        }
         
+        $instance['subscribe_link'] = intval($new_instance['subscribe_link']);
         $instance['show_subscribe_buttons'] = $new_instance['show_subscribe_buttons'] ? true : false;
 
         $instance['limit_by_cat'] = false;
@@ -114,7 +119,7 @@ class Event_Widget extends WP_Widget {
             'event_cat_ids' => array(),
             'event_tag_ids' => array(),
             'event_post_ids' => array(),
-            'events_per_page' => 10,
+            'events_per_page' => 5,
         );
         
         $instance = wp_parse_args($instance, $defaults);
@@ -136,6 +141,7 @@ class Event_Widget extends WP_Widget {
         $dates = $event_calendar_helper->get_agenda_date_array($event_results['events']);
 
         $args['title'] = $instance['title'];
+        $args['subscribe_link'] = $instance['subscribe_link'];
         $args['show_subscribe_buttons'] = $instance['show_subscribe_buttons'];
         $args['dates'] = $dates;
         $args['subscribe_url'] = EVENT_EXPORT_URL . $subscribe_filter;
@@ -156,7 +162,7 @@ class Event_Widget extends WP_Widget {
         </p>
         <p class="event-limit-by-container">
             <?php _e('Filter:') ?>
-            <br />
+            <br>
 
             <input id="<?php echo $limit_by_cat['id'] ?>" name="<?php echo $limit_by_cat['name'] ?>" type="checkbox" value="1" <?php if ($limit_by_cat['value']) echo 'checked="checked"' ?> />
             <label for="<?php echo $limit_by_cat['id'] ?>"><?php _e('Termine mit diesen Kategorien') ?></label>
@@ -201,7 +207,17 @@ class Event_Widget extends WP_Widget {
                 <?php endif ?>
             </select>
         </div>
-        <br />
+        <br>
+        <p>
+            <label for="<?php echo $subscribe_link['id'] ?>"><?php _e('Abonnement-Link (statische Seite):') ?></label>
+            <?php wp_dropdown_pages(array(
+                'id' => $subscribe_link['id'],
+                'name' => $subscribe_link['name'],
+                'selected' => $subscribe_link['value'],
+                'show_option_none' => __('— Auswählen —'),
+                'option_none_value' => -1
+            )); ?>
+        </p>        
         <p>
             <input id="<?php echo $show_subscribe_buttons['id'] ?>" name="<?php echo $show_subscribe_buttons['name'] ?>" type="checkbox" value="1" <?php if ($show_subscribe_buttons['value']) echo 'checked="checked"' ?> />
             <label for="<?php echo $show_subscribe_buttons['id'] ?>"><?php _e('Abonnement-Link anzeigen') ?></label>
@@ -213,8 +229,9 @@ class Event_Widget extends WP_Widget {
         extract($args);
         echo $before_widget;
 
-        if( $title )
+        if( $title ) {
             echo $before_title . $title . $after_title;
+        }
         ?>
         <div>
             <?php if( ! $dates ): ?>
@@ -225,26 +242,26 @@ class Event_Widget extends WP_Widget {
                         
                         <?php foreach( $date_info['events'] as $category ): ?>
                             <?php foreach( $category as $event ): ?>
-							
-								<li class="
-									<?php foreach($cat as $c) echo ' event-category-'.$c->slug; ?>
-									<?php if( isset( $date_info['today'] ) && $date_info['today'] ) echo ' event-today'; ?>
-								">
-			                    
-								<?php $cat = get_the_terms($event->post_id, 'event_category'); ?>
-								
-								<div class="event-date">
-		                            <?php /* echo date_i18n( get_option( 'date_format' ), $timestamp, true ) */?>
-									<div class="event-date-month">
-										<?php echo date_i18n('M', $timestamp, TRUE); ?>
-									</div>
-									<div class="event-date-day">
-										<?php echo date_i18n('d', $timestamp, TRUE); ?>
-									</div>
-		                        </div>
+                            
+                                <li class="
+                                    <?php foreach($cat as $c) echo ' event-category-'.$c->slug; ?>
+                                    <?php if( isset( $date_info['today'] ) && $date_info['today'] ) echo ' event-today'; ?>
+                                ">
+                                
+                                <?php $cat = get_the_terms($event->post_id, 'event_category'); ?>
+                                
+                                <div class="event-date">
+                                    <?php /* echo date_i18n( get_option( 'date_format' ), $timestamp, true ) */?>
+                                    <div class="event-date-month">
+                                        <?php echo date_i18n('M', $timestamp, TRUE); ?>
+                                    </div>
+                                    <div class="event-date-day">
+                                        <?php echo date_i18n('d', $timestamp, TRUE); ?>
+                                    </div>
+                                </div>
                                 <div class="event-info event-id-<?php echo $event->post_id; ?>
                                     <?php if( $event->allday ) echo 'event-allday'; ?>">
-									<?php if( ! $event->allday ): ?>
+                                    <?php if( ! $event->allday ): ?>
                                         <div class="event-time"><?php echo esc_html( sprintf( __( '%s Uhr bis %s Uhr' ), $event->start_time, $event->end_time ) ) ?></div>
                                     <?php endif; ?>
                                     <a href="<?php echo esc_attr( get_permalink( $event->post_id ) ); ?>">
@@ -252,27 +269,23 @@ class Event_Widget extends WP_Widget {
                                             <?php echo esc_html( apply_filters( 'the_title', $event->post->post_title ) ); ?>
                                         </div>
                                     </a>
-									<div class="event-location">
-										<?php if ( !empty( $event->venue ) ): ?>
+                                    <div class="event-location">
+                                        <?php if ( !empty( $event->venue ) ): ?>
                                             <?php echo sprintf( __( '%s' ), $event->venue ); ?>
                                         <?php endif; ?>
-									</div>
+                                    </div>
                                 </div>
 
-								</li>
+                                </li>
                             <?php endforeach; ?>
                         <?php endforeach; ?>
                     
                     <?php endforeach; ?>
                     <li>
                         <div class="events-more-links">               
-                        <?php /*if( $show_subscribe_buttons ): ?>
-                            <a href="<?php echo $subscribe_url; ?>" title="<?php _e( 'Abonniere diesen Kalender in Ihrem bevorzugtem Programm (iCal, Outlook, etc.)' ); ?>" />
-                                <?php _e( 'Abonniere diesen Kalender &raquo;' ); ?>
-                            </a>
-						<?php endif; */?>
-						<a class="events-more" href="<?php echo get_post_type_archive_link('event'); ?>"><?php _e( 'Mehr Veranstaltungen' ); ?></a>
-
+                        <?php if( $show_subscribe_buttons && $subscribe_link > 0): ?>
+                            <a class="events-more" href="<?php echo get_permalink($subscribe_link); ?>"><?php _e( 'Mehr Veranstaltungen' ); ?></a>
+                        <?php endif; ?>
                         </div>
                     </li>
                 </ul>
@@ -280,8 +293,7 @@ class Event_Widget extends WP_Widget {
         </div>
 
         <?php 
-        echo $after_widget;
-        
+        echo $after_widget;       
     }
     
 }
