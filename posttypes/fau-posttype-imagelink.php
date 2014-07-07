@@ -25,7 +25,7 @@ function imagelink_post_type() {
 	$labels = array(
 		'name'                => _x( 'Imagelinks', 'Post Type General Name', 'imagelink' ),
 		'singular_name'       => _x( 'Imagelink', 'Post Type Singular Name', 'imagelink' ),
-		'menu_name'           => __( 'Imagelink', 'imagelink' ),
+		'menu_name'           => __( 'Imagelinks', 'imagelink' ),
 		'parent_item_colon'   => __( 'Parent Imagelink', 'imagelink' ),
 		'all_items'           => __( 'All Imagelinks', 'imagelink' ),
 		'view_item'           => __( 'View Imagelink', 'imagelink' ),
@@ -58,13 +58,19 @@ function imagelink_post_type() {
 		'rewrite'             => false,
 		'capability_type'     => 'imagelink',
 		'capabilities' => array(
-			'edit_post' => 'edit_imagelink',
-			'edit_posts' => 'edit_imagelinks',
-			'read_post' => 'read_imagelink',
-			'delete_post' => 'delete_imagelink',
-			'edit_others_posts' => 'edit_others_imagelinks',
-			'publish_posts' => 'publish_imagelink',
-			'delete_posts' => 'delete_imagelink',
+            'edit_post' => 'edit_imagelink',
+            'read_post' => 'read_imagelink',
+            'delete_post' => 'delete_imagelink',
+            'edit_posts' => 'edit_imagelinks',
+            'edit_others_posts' => 'edit_others_imagelinks',
+            'publish_posts' => 'publish_imagelinks',
+            'read_private_posts' => 'read_private_imagelinks',
+            'delete_posts' => 'delete_imagelinks',
+            'delete_private_posts' => 'delete_private_imagelinks',
+            'delete_published_posts' => 'delete_published_imagelinks',
+            'delete_others_posts' => 'delete_others_imagelinks',
+            'edit_private_posts' => 'edit_private_imagelinks',
+            'edit_published_posts' => 'edit_published_imagelinks'
 		),
 	);
 	register_post_type( 'imagelink', $args );
@@ -108,7 +114,7 @@ function imagelink_post_types_admin_order( $wp_query ) {
 
 		if ( $post_type == 'imagelink') {
 
-			if( ! $wp_query->query['orderby'])
+			if( ! isset($wp_query->query['orderby']))
 			{
 				$wp_query->set('orderby', 'title');
 				$wp_query->set('order', 'ASC');
@@ -118,5 +124,3 @@ function imagelink_post_types_admin_order( $wp_query ) {
 	}
 }
 add_filter('pre_get_posts', 'imagelink_post_types_admin_order');
-
-?>

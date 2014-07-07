@@ -65,13 +65,19 @@ function person_post_type() {
 		'rewrite'             => $rewrite,
 		'capability_type'     => 'person',
 		'capabilities' => array(
-			'edit_post' => 'edit_person',
-			'edit_posts' => 'edit_persons',
-			'read_post' => 'read_person',
-			'delete_post' => 'delete_person',
-			'edit_others_posts' => 'edit_others_persons',
-			'publish_posts' => 'publish_person',
-			'delete_posts' => 'delete_person',
+            'edit_post' => 'edit_person',
+            'read_post' => 'read_person',
+            'delete_post' => 'delete_person',
+            'edit_posts' => 'edit_persons',
+            'edit_others_posts' => 'edit_others_persons',
+            'publish_posts' => 'publish_persons',
+            'read_private_posts' => 'read_private_persons',
+            'delete_posts' => 'delete_persons',
+            'delete_private_posts' => 'delete_private_persons',
+            'delete_published_posts' => 'delete_published_persons',
+            'delete_others_posts' => 'delete_others_persons',
+            'edit_private_posts' => 'edit_private_persons',
+            'edit_published_posts' => 'edit_published_persons'
 		),
 	);
 	register_post_type( 'person', $args );
@@ -115,7 +121,7 @@ function person_post_types_admin_order( $wp_query ) {
 
 		if ( $post_type == 'person') {
 
-			if( ! $wp_query->query['orderby'])
+			if( ! isset($wp_query->query['orderby']))
 			{
 				$wp_query->set('orderby', 'title');
 				$wp_query->set('order', 'ASC');
@@ -125,5 +131,3 @@ function person_post_types_admin_order( $wp_query ) {
 	}
 }
 add_filter('pre_get_posts', 'person_post_types_admin_order');
-
-?>
