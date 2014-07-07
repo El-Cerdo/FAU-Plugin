@@ -107,4 +107,23 @@ function glossary_restrict_manage_posts() {
 add_action( 'restrict_manage_posts', 'glossary_restrict_manage_posts' );
 
 
+function glossary_post_types_admin_order( $wp_query ) {
+	if (is_admin()) {
+
+		$post_type = $wp_query->query['post_type'];
+
+		if ( $post_type == 'glossary') {
+
+			if( ! $wp_query->query['orderby'])
+			{
+				$wp_query->set('orderby', 'title');
+				$wp_query->set('order', 'ASC');
+			}
+
+		}
+	}
+}
+add_filter('pre_get_posts', 'glossary_post_types_admin_order');
+
+
 ?>

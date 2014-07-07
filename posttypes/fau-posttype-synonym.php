@@ -107,4 +107,22 @@ function synonym_restrict_manage_posts() {
 add_action( 'restrict_manage_posts', 'synonym_restrict_manage_posts' );
 
 
+function synonym_post_types_admin_order( $wp_query ) {
+	if (is_admin()) {
+
+		$post_type = $wp_query->query['post_type'];
+
+		if ( $post_type == 'synonym') {
+
+			if( ! $wp_query->query['orderby'])
+			{
+				$wp_query->set('orderby', 'title');
+				$wp_query->set('order', 'ASC');
+			}
+
+		}
+	}
+}
+add_filter('pre_get_posts', 'synonym_post_types_admin_order');
+
 ?>
