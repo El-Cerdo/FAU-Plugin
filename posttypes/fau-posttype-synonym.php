@@ -65,13 +65,19 @@ function synonym_post_type() {
 		'rewrite'             => $rewrite,
 		'capability_type'     => 'synonym',
 		'capabilities' => array(
-			'edit_post' => 'edit_synonym',
-			'edit_posts' => 'edit_synonyms',
-			'read_post' => 'read_synonym',
-			'delete_post' => 'delete_synonym',
-			'edit_others_posts' => 'edit_others_synonyms',
-			'publish_posts' => 'publish_synonym',
-			'delete_posts' => 'delete_synonym',
+            'edit_post' => 'edit_synonym',
+            'read_post' => 'read_synonym',
+            'delete_post' => 'delete_synonym',
+            'edit_posts' => 'edit_synonyms',
+            'edit_others_posts' => 'edit_others_synonyms',
+            'publish_posts' => 'publish_synonyms',
+            'read_private_posts' => 'read_private_synonyms',
+            'delete_posts' => 'delete_synonyms',
+            'delete_private_posts' => 'delete_private_synonyms',
+            'delete_published_posts' => 'delete_published_synonyms',
+            'delete_others_posts' => 'delete_others_synonyms',
+            'edit_private_posts' => 'edit_private_synonyms',
+            'edit_published_posts' => 'edit_published_synonyms'
 		),
 	);
 	register_post_type( 'synonym', $args );
@@ -114,7 +120,7 @@ function synonym_post_types_admin_order( $wp_query ) {
 
 		if ( $post_type == 'synonym') {
 
-			if( ! $wp_query->query['orderby'])
+			if( ! isset($wp_query->query['orderby']))
 			{
 				$wp_query->set('orderby', 'title');
 				$wp_query->set('order', 'ASC');
@@ -124,5 +130,3 @@ function synonym_post_types_admin_order( $wp_query ) {
 	}
 }
 add_filter('pre_get_posts', 'synonym_post_types_admin_order');
-
-?>

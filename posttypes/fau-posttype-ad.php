@@ -26,7 +26,7 @@ function ad_post_type() {
 	$labels = array(
 		'name'                => _x( 'Ads', 'Post Type General Name', 'ad' ),
 		'singular_name'       => _x( 'Ad', 'Post Type Singular Name', 'ad' ),
-		'menu_name'           => __( 'Ad', 'ad' ),
+		'menu_name'           => __( 'Ads', 'ad' ),
 		'parent_item_colon'   => __( 'Parent Ad:', 'ad' ),
 		'all_items'           => __( 'All Ads', 'ad' ),
 		'view_item'           => __( 'View Ad', 'ad' ),
@@ -65,13 +65,19 @@ function ad_post_type() {
 		'rewrite'             => $rewrite,
 		'capability_type'     => 'ad',
 		'capabilities' => array(
-			'edit_post' => 'edit_ad',
-			'edit_posts' => 'edit_ads',
-			'read_post' => 'read_ad',
-			'delete_post' => 'delete_ad',
-			'edit_others_posts' => 'edit_others_ad',
-			'publish_posts' => 'publish_ad',
-			'delete_posts' => 'delete_ad',
+            'edit_post' => 'edit_ad',
+            'read_post' => 'read_ad',
+            'delete_post' => 'delete_ad',
+            'edit_posts' => 'edit_ads',
+            'edit_others_posts' => 'edit_others_ads',
+            'publish_posts' => 'publish_ads',
+            'read_private_posts' => 'read_private_ads',
+            'delete_posts' => 'delete_ads',
+            'delete_private_posts' => 'delete_private_ads',
+            'delete_published_posts' => 'delete_published_ads',
+            'delete_others_posts' => 'delete_others_ads',
+            'edit_private_posts' => 'edit_private_ads',
+            'edit_published_posts' => 'edit_published_ads'
 		),
 	);
 	register_post_type( 'ad', $args );
@@ -114,7 +120,7 @@ function ad_post_types_admin_order( $wp_query ) {
 
 		if ( $post_type == 'ad') {
 
-			if( ! $wp_query->query['orderby'])
+			if( ! isset($wp_query->query['orderby']))
 			{
 				$wp_query->set('orderby', 'title');
 				$wp_query->set('order', 'ASC');
@@ -124,5 +130,3 @@ function ad_post_types_admin_order( $wp_query ) {
 	}
 }
 add_filter('pre_get_posts', 'ad_post_types_admin_order');
-
-?>

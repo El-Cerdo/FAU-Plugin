@@ -24,7 +24,7 @@ function glossary_post_type() {
 	load_plugin_textdomain( 'glossary', false, dirname( plugin_basename( __FILE__ ) ) . '/../languages/' ); 
 	
 	$labels = array(
-		'name'                => _x( 'Glossary', 'Post Type General Name', 'glossary' ),
+		'name'                => _x( 'Glossary items', 'Post Type General Name', 'glossary' ),
 		'singular_name'       => _x( 'Glossary item', 'Post Type Singular Name', 'glossary' ),
 		'menu_name'           => __( 'Glossary', 'glossary' ),
 		'parent_item_colon'   => __( 'Parent item', 'glossary' ),
@@ -65,13 +65,19 @@ function glossary_post_type() {
 		'rewrite'             => $rewrite,
 		'capability_type'     => 'glossary',
 		'capabilities' => array(
-			'edit_post' => 'edit_glossary',
-			'edit_posts' => 'edit_glossary_items',
-			'read_post' => 'read_glossary',
-			'delete_post' => 'delete_glossary',
-			'edit_others_posts' => 'edit_others_glossary',
-			'publish_posts' => 'publish_glossary',
-			'delete_posts' => 'delete_glossary',
+            'edit_post' => 'edit_glossary',
+            'read_post' => 'read_glossary',
+            'delete_post' => 'delete_glossary',
+            'edit_posts' => 'edit_glossarys',
+            'edit_others_posts' => 'edit_others_glossarys',
+            'publish_posts' => 'publish_glossarys',
+            'read_private_posts' => 'read_private_glossarys',
+            'delete_posts' => 'delete_glossarys',
+            'delete_private_posts' => 'delete_private_glossarys',
+            'delete_published_posts' => 'delete_published_glossarys',
+            'delete_others_posts' => 'delete_others_glossarys',
+            'edit_private_posts' => 'edit_private_glossarys',
+            'edit_published_posts' => 'edit_published_glossarys'
 		),
 	);
 	register_post_type( 'glossary', $args );
@@ -114,7 +120,7 @@ function glossary_post_types_admin_order( $wp_query ) {
 
 		if ( $post_type == 'glossary') {
 
-			if( ! $wp_query->query['orderby'])
+			if( ! isset($wp_query->query['orderby']))
 			{
 				$wp_query->set('orderby', 'title');
 				$wp_query->set('order', 'ASC');
@@ -124,6 +130,3 @@ function glossary_post_types_admin_order( $wp_query ) {
 	}
 }
 add_filter('pre_get_posts', 'glossary_post_types_admin_order');
-
-
-?>
