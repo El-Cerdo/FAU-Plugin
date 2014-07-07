@@ -64,6 +64,15 @@ function glossary_post_type() {
 		'query_var'           => 'glossary',
 		'rewrite'             => $rewrite,
 		'capability_type'     => 'glossary',
+		'capabilities' => array(
+			'edit_post' => 'edit_glossary',
+			'edit_posts' => 'edit_glossary_items',
+			'read_post' => 'read_glossary',
+			'delete_post' => 'delete_glossary',
+			'edit_others_posts' => 'edit_others_glossary',
+			'publish_posts' => 'publish_glossary',
+			'delete_posts' => 'delete_glossary',
+		),
 	);
 	register_post_type( 'glossary', $args );
 

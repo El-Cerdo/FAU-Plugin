@@ -64,6 +64,15 @@ function synonym_post_type() {
 		'query_var'           => 'synonym',
 		'rewrite'             => $rewrite,
 		'capability_type'     => 'synonym',
+		'capabilities' => array(
+			'edit_post' => 'edit_synonym',
+			'edit_posts' => 'edit_synonyms',
+			'read_post' => 'read_synonym',
+			'delete_post' => 'delete_synonym',
+			'edit_others_posts' => 'edit_others_synonyms',
+			'publish_posts' => 'publish_synonym',
+			'delete_posts' => 'delete_synonym',
+		),
 	);
 	register_post_type( 'synonym', $args );
 

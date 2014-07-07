@@ -64,6 +64,15 @@ function ad_post_type() {
 		'query_var'           => 'ad',
 		'rewrite'             => $rewrite,
 		'capability_type'     => 'ad',
+		'capabilities' => array(
+			'edit_post' => 'edit_ad',
+			'edit_posts' => 'edit_ads',
+			'read_post' => 'read_ad',
+			'delete_post' => 'delete_ad',
+			'edit_others_posts' => 'edit_others_ad',
+			'publish_posts' => 'publish_ad',
+			'delete_posts' => 'delete_ad',
+		),
 	);
 	register_post_type( 'ad', $args );
 

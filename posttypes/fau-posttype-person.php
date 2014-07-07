@@ -64,6 +64,15 @@ function person_post_type() {
 		'query_var'           => 'person',
 		'rewrite'             => $rewrite,
 		'capability_type'     => 'person',
+		'capabilities' => array(
+			'edit_post' => 'edit_person',
+			'edit_posts' => 'edit_persons',
+			'read_post' => 'read_person',
+			'delete_post' => 'delete_person',
+			'edit_others_posts' => 'edit_others_persons',
+			'publish_posts' => 'publish_person',
+			'delete_posts' => 'delete_person',
+		),
 	);
 	register_post_type( 'person', $args );
 

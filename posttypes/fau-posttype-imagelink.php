@@ -57,6 +57,15 @@ function imagelink_post_type() {
 		'query_var'           => 'imagelink',
 		'rewrite'             => false,
 		'capability_type'     => 'imagelink',
+		'capabilities' => array(
+			'edit_post' => 'edit_imagelink',
+			'edit_posts' => 'edit_imagelinks',
+			'read_post' => 'read_imagelink',
+			'delete_post' => 'delete_imagelink',
+			'edit_others_posts' => 'edit_others_imagelinks',
+			'publish_posts' => 'publish_imagelink',
+			'delete_posts' => 'delete_imagelink',
+		),
 	);
 	register_post_type( 'imagelink', $args );
 
