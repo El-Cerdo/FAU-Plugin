@@ -68,7 +68,7 @@ function events_shortcode($atts, $content = "") {
     
     ob_start();
     ?>
-    <div>
+    <div class="events-list">
         <?php if (!$dates): ?>
             <p><?php _e('Keine bevorstehenden Termine'); ?></p>
         <?php else: ?>
