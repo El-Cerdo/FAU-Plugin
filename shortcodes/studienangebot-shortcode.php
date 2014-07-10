@@ -414,6 +414,12 @@ function studienangebot($atts) {
             </div>
         </div>
     </div>
+
+	<div id="loading">
+		<div id="loading-background"></div>
+		<div id="loading-spinner"></div>
+	</div>
+	
     <?php
     return ob_get_clean();
 }
