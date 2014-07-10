@@ -76,44 +76,37 @@ function events_shortcode($atts, $content = "") {
                 <?php foreach ($dates as $timestamp => $date_info): ?>
                     <?php foreach ($date_info['events'] as $category): ?>
                         <?php foreach ($category as $event): ?>
-                            <li class="
-                            <?php
-                            foreach ($cat as $c)
-                                echo ' event-category-' . $c->slug;
-                            ?>
-                                    <?php if (isset($date_info['today']) && $date_info['today']) echo ' event-today'; ?>
-                                ">
-                    <?php $cat = get_the_terms($event->post_id, 'event_category'); ?>
+                            <?php $cat = get_the_terms($event->post_id, 'event_category'); ?>
+                            <li class="<?php foreach ($cat as $c) : echo ' event-category-' . $c->slug; endforeach; ?>
+                                <?php if (isset($date_info['today']) && $date_info['today']) echo ' event-today'; ?>">
                                 <div class="event-date">
                                     <div class="event-date-month">
-                    <?php echo date_i18n('M', $timestamp, TRUE); ?>
+                                    <?php echo date_i18n('M', $timestamp, TRUE); ?>
                                     </div>
                                     <div class="event-date-day">
-                    <?php echo date_i18n('d', $timestamp, TRUE); ?>
+                                    <?php echo date_i18n('d', $timestamp, TRUE); ?>
                                     </div>
                                 </div>
                                 <div class="event-info event-id-<?php echo $event->post_id; ?>
-                                         <?php if ($event->allday) echo 'event-allday'; ?>">
+                                <?php if ($event->allday) : echo 'event-allday'; endif; ?>">
                                     <?php if (!$event->allday): ?>
-                                        <div class="event-time"><?php echo esc_html(sprintf(__('%s Uhr bis %s Uhr'), $event->start_time, $event->end_time)) ?></div>
-                    <?php endif; ?>
+                                    <div class="event-time"><?php echo esc_html(sprintf(__('%s Uhr bis %s Uhr'), $event->start_time, $event->end_time)) ?></div>
+                                    <?php endif; ?>
                                     <a href="<?php echo esc_attr(get_permalink($event->post_id)); ?>">
                                         <div class="event-title">
-                    <?php echo esc_html(apply_filters('the_title', $event->post->post_title)); ?>
+                                        <?php echo esc_html(apply_filters('the_title', $event->post->post_title)); ?>
                                         </div>
                                     </a>
                                     <div class="event-location">
                                         <?php if (!empty($event->venue)): ?>
                                             <?php echo sprintf(__('%s'), $event->venue); ?>
-                    <?php endif; ?>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
-
                             </li>
                         <?php endforeach; ?>
                     <?php endforeach; ?>
-
-        <?php endforeach; ?>
+                <?php endforeach; ?>
                 <?php if($abonnement_link): ?>
                 <li>
                     <div class="events-more-links">

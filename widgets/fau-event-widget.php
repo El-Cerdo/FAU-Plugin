@@ -238,18 +238,12 @@ class Event_Widget extends WP_Widget {
                 <p><?php _e( 'Keine bevorstehenden Termine' ); ?></p>
             <?php else: ?>
                 <ul>
-                    <?php foreach( $dates as $timestamp => $date_info ): ?>
-                        
+                    <?php foreach( $dates as $timestamp => $date_info ): ?>                       
                         <?php foreach( $date_info['events'] as $category ): ?>
                             <?php foreach( $category as $event ): ?>
-                            
-                                <li class="
-                                    <?php foreach($cat as $c) echo ' event-category-'.$c->slug; ?>
-                                    <?php if( isset( $date_info['today'] ) && $date_info['today'] ) echo ' event-today'; ?>
-                                ">
-                                
-                                <?php $cat = get_the_terms($event->post_id, 'event_category'); ?>
-                                
+                            <?php $cat = get_the_terms($event->post_id, 'event_category'); ?>
+                            <li class="<?php foreach ($cat as $c) : echo ' event-category-' . $c->slug; endforeach; ?>
+                                <?php if (isset($date_info['today']) && $date_info['today']) echo ' event-today'; ?>">
                                 <div class="event-date">
                                     <?php /* echo date_i18n( get_option( 'date_format' ), $timestamp, true ) */?>
                                     <div class="event-date-month">
@@ -275,7 +269,6 @@ class Event_Widget extends WP_Widget {
                                         <?php endif; ?>
                                     </div>
                                 </div>
-
                                 </li>
                             <?php endforeach; ?>
                         <?php endforeach; ?>
