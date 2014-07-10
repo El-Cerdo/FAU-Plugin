@@ -104,7 +104,7 @@ function studienangebot($atts) {
                     </p>
                 <?php endforeach; ?>                
                 <p>
-                    <input type="submit" value="Auswählen">
+                    <input class="submit-button" type="submit" value="Auswählen">
                 </p>
             </form>
         </div>
