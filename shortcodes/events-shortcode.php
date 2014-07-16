@@ -59,8 +59,8 @@ function events_shortcode($atts, $content = "") {
     $timestamp = $event_events_helper->gmt_to_local(time());
 
     $limit = array(
-        'kategorien' => $kategorien,
-        'schlagworte' => $schlagworte
+        'cat_ids' => $kategorien,
+        'tag_ids' => $schlagworte
     );
 
     $event_results = $event_calendar_helper->get_events_relative_to($timestamp, $anzahl, 0, $limit);
