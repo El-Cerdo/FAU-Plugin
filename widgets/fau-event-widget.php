@@ -115,15 +115,6 @@ class Event_Widget extends WP_Widget {
             return;
         }
         
-        $defaults = array(
-            'event_cat_ids' => array(),
-            'event_tag_ids' => array(),
-            'event_post_ids' => array(),
-            'events_per_page' => 5,
-        );
-        
-        $instance = wp_parse_args($instance, $defaults);
-
         $subscribe_filter = '';
         $subscribe_filter .= $instance['event_cat_ids'] ? '&event_cat_ids=' . join(',', $instance['event_cat_ids']) : '';
         $subscribe_filter .= $instance['event_tag_ids'] ? '&event_tag_ids=' . join(',', $instance['event_tag_ids']) : '';
