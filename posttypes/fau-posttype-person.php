@@ -79,6 +79,7 @@ function person_post_type() {
             'edit_private_posts' => 'edit_private_persons',
             'edit_published_posts' => 'edit_published_persons'
 		),
+		'map_meta_cap' => true
 	);
 	register_post_type( 'person', $args );
 
