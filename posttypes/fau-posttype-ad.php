@@ -79,6 +79,7 @@ function ad_post_type() {
             'edit_private_posts' => 'edit_private_ads',
             'edit_published_posts' => 'edit_published_ads'
 		),
+		'map_meta_cap' => true
 	);
 	register_post_type( 'ad', $args );
 

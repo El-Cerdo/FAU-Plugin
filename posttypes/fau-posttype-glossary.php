@@ -79,6 +79,7 @@ function glossary_post_type() {
             'edit_private_posts' => 'edit_private_glossarys',
             'edit_published_posts' => 'edit_published_glossarys'
 		),
+		'map_meta_cap' => true
 	);
 	register_post_type( 'glossary', $args );
 

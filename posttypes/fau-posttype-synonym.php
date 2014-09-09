@@ -79,6 +79,7 @@ function synonym_post_type() {
             'edit_private_posts' => 'edit_private_synonyms',
             'edit_published_posts' => 'edit_published_synonyms'
 		),
+		'map_meta_cap' => true
 	);
 	register_post_type( 'synonym', $args );
 
