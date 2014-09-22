@@ -25,5 +25,4 @@ require_once('widgets/fau-tagcloud-widget.php');
 require_once('filters/fau-admin.php');
 require_once('filters/fau-event-content.php');
 
-require_once('shortcodes/studienangebot-shortcode.php');
 require_once('shortcodes/events-shortcode.php');
