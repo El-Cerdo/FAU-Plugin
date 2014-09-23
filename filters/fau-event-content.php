@@ -17,7 +17,7 @@ function event_get_view(&$event, &$content) {
 
     event_single_view($event);
     
-    echo $content;
+    echo wpautop($content, true);
 
     $single_content = ob_get_contents();
     ob_end_clean();
