@@ -47,17 +47,8 @@ function event_single_view(&$event) {
     extract( $args );    
     ?>
     <div class="event-detail-item event-category-die-fau">
-        <div class="event-date">
-            <div class="event-date-month"><?php echo $event->start_month_html ?></div>
-            <div class="event-date-day"><?php echo $event->start_day_html ?></div>
-        </div>                          
-        <div class="event-info event-id-<?php echo $event->post_id ?>">
-            <div class="event-time"><?php echo $event->short_timespan_html ?></div>   
-			<?php if ($location): ?>
-	        <div class="event-location"><?php echo $location ?></div>
-	        <?php endif; ?>                             
-        </div>
-        
+        <div class="event-date"><div class="event-date-month"><?php echo $event->start_month_html ?></div><div class="event-date-day"><?php echo $event->start_day_html ?></div></div>                          
+        <div class="event-info event-id-<?php echo $event->post_id ?>"><div class="event-time"><?php echo $event->short_timespan_html ?></div><?php if ($location): ?><div class="event-location"><?php echo $location ?></div><?php endif; ?></div>        
     </div>
     <?php
 }
