@@ -19,8 +19,6 @@ function event_get_view(&$event, &$content) {
     
     echo $content;
 
-    event_single_footer_view($event);
-
     $single_content = ob_get_contents();
     ob_end_clean();
 
