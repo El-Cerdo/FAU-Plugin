@@ -17,7 +17,7 @@ function event_get_view(&$event, &$content) {
 
     event_single_view($event);
     
-    echo $content;
+    echo wpautop($content, true);
 
     event_single_footer_view($event);
 
