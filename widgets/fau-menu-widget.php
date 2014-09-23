@@ -8,12 +8,12 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 	private $showdescription = FALSE;
 	
 	function __construct($showdescription) {
-	 	echo '<div class="row subpages-menu">';
+	 	echo '<ul class="row subpages-menu">';
 		if($showdescription) $this->showdescription = TRUE;
 	}
 	
 	function __destruct() {
-		echo '</div>';
+		echo '</ul>';
 	}
 	
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
@@ -42,6 +42,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$classes[] = 'menu-item-' . $item->ID;
+			if($this->level == 1 && ($this->count[$this->level] == 5 || $this->count[$this->level] == 9)) $classes[] = 'clear';
 			if($this->level == 1) $classes[] = 'span3';
 
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
@@ -50,8 +51,14 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
-			if($this->level == 1) $output .= $indent . '<div' . $id . $value . $class_names .'>';
-			else $output .= '<li>';
+			if($this->level == 1) 
+			{
+				$output .= $indent . '<li' . $id . $value . $class_names .'>';
+			}
+			else
+			{
+				$output .= '<li>';
+			}
 
 			$atts = array();
 			$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
@@ -116,7 +123,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 	function end_el(&$output, $item, $depth=0, $args=array()) {      
 		if($this->level == 1 || ($this->level == 2 && $this->count[$this->level] <= 5))
 		{
-			if($this->level == 1) $output .= "</div>\n";  
+			if($this->level == 1) $output .= "</li>\n";  
 			else $output .= "</li>\n";
 		}
 		elseif($this->level == 2 && $this->count[$this->level] == 6 && $this->showdescription == FALSE)
@@ -124,10 +131,11 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 			$output .= '<li class="more"><a href="'.$this->element->url.'">Mehr …</a></li>';
 		}
 		
-		if($this->level == 1)
+	/*	if($this->level == 1)
 		{
 			if($this->count[$this->level] % 4 == 0) $output .= '</div><div class="row subpages-menu">';
 		}
+		*/
     }  
     
 }
