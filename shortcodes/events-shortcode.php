@@ -13,7 +13,8 @@ function events_shortcode($atts, $content = "") {
             'kategorien' => '',     // Trenne Kategorien-Slugs durch Kommas
             'schlagworte' => '',    // Trenne Schlagworte-Slugs durch Kommas
             'anzahl' => 10,         // Anzahl der Termine
-            'abonnement_link' => 1  // Abonnement-Link anzeigen
+            'page_link' => 0,       // Permalink zu einer Seite die bspw. eine Liste der Termine erzeugt
+            'abonnement_link' => 0  // Abonnement-Link anzeigen
         ), $atts
     );
 
@@ -45,6 +46,12 @@ function events_shortcode($atts, $content = "") {
         }
         $schlagworte[] = $term->term_id;
     }
+    
+    $page_link = !empty($atts['page_link']) ? (int)$atts['page_link'] : false;
+    
+    if($page_link > 0) {
+        $page_link = get_permalink($page_link);
+    }
         
     $abonnement_link = !empty($atts['abonnement_link']) ? true : false;
 
@@ -63,6 +70,9 @@ function events_shortcode($atts, $content = "") {
         'tag_ids' => $schlagworte
     );
 
+    if((!empty($atts['kategorien']) && empty($kategorien)) || (!empty($atts['schlagworte']) && empty($schlagworte))) {
+        $anzahl = 0;
+    }    
     $event_results = $event_calendar_helper->get_events_relative_to($timestamp, $anzahl, 0, $limit);
     $dates = $event_calendar_helper->get_agenda_date_array($event_results['events']);
     
@@ -86,11 +96,16 @@ function events_shortcode($atts, $content = "") {
                         <?php endforeach; ?>
                     <?php endforeach; ?>
                 <?php endforeach; ?>
-                <?php if($abonnement_link): ?>
+                <?php if($page_link): ?>
                 <li>
-                    <div class="events-more-links"><a class="events-more" href="<?php echo $subscribe_url; ?>"><?php _e('Mehr Veranstaltungen'); ?></a></div>
+                    <div class="events-more-links"><a class="events-more" href="<?php echo $page_link; ?>"><?php _e('Mehr Veranstaltungen'); ?></a></div>
                 </li>
                 <?php endif; ?>
+                <?php if($abonnement_link): ?>
+                <li>
+                    <div class="events-more-links"><a class="events-more" href="<?php echo $subscribe_url; ?>"><?php _e('Abonnement'); ?></a></div>
+                </li>
+                <?php endif; ?>                
             </ul>
     <?php endif; ?>
     </div>
