@@ -50,9 +50,17 @@ class FAUAdWidget extends WP_Widget
 		{
 			$post = get_post($id);
 			
-			if(get_field('link', $id))	echo '<a href="'.get_field('link', $id).'">';
-				echo get_the_post_thumbnail($id, 'full');
-			if(get_field('link', $id))	echo '</a>';
+			if(get_field('ad_script', $id) && get_field('ad_script', $id) != '')
+			{
+				echo html_entity_decode(get_field('ad_script', $id));
+			}
+			else
+			{
+				if(get_field('link', $id))	echo '<a href="'.get_field('link', $id).'">';
+					echo get_the_post_thumbnail($id, 'full');
+				if(get_field('link', $id))	echo '</a>';
+			}
+						
 		}
 		echo '</div>';
 		echo $after_widget;
