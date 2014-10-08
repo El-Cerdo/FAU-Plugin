@@ -44,6 +44,9 @@ class FAUAdWidget extends WP_Widget
 
 		echo $before_widget;
 		echo '<div class="banner-ad">';
+			echo '<a class="banner-ad-notice" href="'.get_permalink(174955).'">';
+			  _e( 'Werbung' );
+			echo '</a>';
 		$id = empty($instance['id']) ? ' ' : $instance['id'];
 
 		if (!empty($id))
