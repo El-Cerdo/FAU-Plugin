@@ -9,7 +9,7 @@ function imagelink_taxonomy() {
 			'label' 			=> 'Bildlink-Kategorien',  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
-					'slug' 			=> 'imagelink', // This controls the base slug that will display before each term
+					'slug' 			=> 'imagelinks', // This controls the base slug that will display before each term
 					'with_front' 	=> false // Don't display the category base before
 					)
 			)
