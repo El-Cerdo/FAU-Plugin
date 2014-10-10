@@ -9,7 +9,7 @@ function ads_taxonomy() {
 			'label' 			=> 'Werbe-Kategorien',  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
-					'slug' 			=> 'ad', // This controls the base slug that will display before each term
+					'slug' 			=> 'ads', // This controls the base slug that will display before each term
 					'with_front' 	=> false // Don't display the category base before
 					)
 			)
