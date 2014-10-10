@@ -9,7 +9,7 @@ function synonyms_taxonomy() {
 			'label' 			=> 'Synonym-Kategorien',  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
-					'slug' 			=> 'synonym', // This controls the base slug that will display before each term
+					'slug' 			=> 'synonyms', // This controls the base slug that will display before each term
 					'with_front' 	=> false // Don't display the category base before
 					)
 			)
