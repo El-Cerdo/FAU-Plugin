@@ -9,7 +9,7 @@ function glossary_taxonomy() {
 			'label' 			=> 'Glossar-Kategorien',  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
-					'slug' 			=> 'glossary', // This controls the base slug that will display before each term
+					'slug' 			=> 'glossaries', // This controls the base slug that will display before each term
 					'with_front' 	=> false // Don't display the category base before
 					)
 			)

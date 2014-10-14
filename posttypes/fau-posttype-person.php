@@ -9,7 +9,7 @@ function persons_taxonomy() {
 			'label' 			=> 'Personen-Kategorien',  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
-					'slug' 			=> 'person', // This controls the base slug that will display before each term
+					'slug' 			=> 'persons', // This controls the base slug that will display before each term
 					'with_front' 	=> false // Don't display the category base before
 					)
 			)
