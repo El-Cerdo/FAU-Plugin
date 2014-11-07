@@ -1,0 +1,444 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FAU-Projekt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-07 15:37+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: RRZE-Webteam\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;esc_attr__;esc_attr_e;_n:1,2;"
+"_nx:4c,1,2;_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../posttypes/fau-posttype-ad.php:9
+msgid "Werbe-Kategorien"
+msgstr "Ad Categories"
+
+#: ../posttypes/fau-posttype-ad.php:25
+msgctxt "Post Type General Name"
+msgid "Werbebanner"
+msgstr "Ads"
+
+#: ../posttypes/fau-posttype-ad.php:26
+msgctxt "Post Type Singular Name"
+msgid "Werbebanner"
+msgstr "Ad"
+
+#: ../posttypes/fau-posttype-ad.php:27 ../posttypes/fau-posttype-ad.php:47
+msgid "Werbebanner"
+msgstr "Ad-Banners"
+
+#: ../posttypes/fau-posttype-ad.php:28
+msgid "Übergeordneter Werbebanner"
+msgstr "Parent Ad"
+
+#: ../posttypes/fau-posttype-ad.php:29
+msgid "Alle Werbebanner"
+msgstr "All Ads"
+
+#: ../posttypes/fau-posttype-ad.php:30 ../widgets/fau-ad-widget.php:8
+msgid "Werbebanner anzeigen"
+msgstr "View Ad"
+
+#: ../posttypes/fau-posttype-ad.php:31
+msgid "Neues Werbebanner einfügen"
+msgstr "Add new Ad"
+
+#: ../posttypes/fau-posttype-ad.php:32
+msgid "Neues Werbebanner"
+msgstr "New Ad"
+
+#: ../posttypes/fau-posttype-ad.php:33
+msgid "Werbebanner bearbeiten"
+msgstr "Edit Ad"
+
+#: ../posttypes/fau-posttype-ad.php:34
+msgid "Werbebanner aktualisieren"
+msgstr "Update Ad"
+
+#: ../posttypes/fau-posttype-ad.php:35
+msgid "Werbebanner suchen"
+msgstr "Search Ads"
+
+#: ../posttypes/fau-posttype-ad.php:36
+msgid "Keine Werbebanner gefunden"
+msgstr "No Ads found"
+
+#: ../posttypes/fau-posttype-ad.php:37
+msgid "Keine Werbebanner im Papierkorb gefunden"
+msgstr "No Ads found in Trash"
+
+#: ../posttypes/fau-posttype-ad.php:46
+msgid "werbebanner"
+msgstr "ad"
+
+#: ../posttypes/fau-posttype-ad.php:99
+#: ../posttypes/fau-posttype-glossary.php:99
+#: ../posttypes/fau-posttype-imagelink.php:92
+#: ../posttypes/fau-posttype-person.php:99
+#: ../posttypes/fau-posttype-synonym.php:99
+#, php-format
+msgid "Alle %s anzeigen"
+msgstr "Show all %s"
+
+#: ../posttypes/fau-posttype-glossary.php:9
+msgid "Glossar-Kategorien"
+msgstr "Glossary Categories"
+
+#: ../posttypes/fau-posttype-glossary.php:25
+msgctxt "Post Type General Name"
+msgid "Glossar-Einträge"
+msgstr "Glossary Items"
+
+#: ../posttypes/fau-posttype-glossary.php:26
+msgctxt "Post Type Singular Name"
+msgid "Glossar-Eintrag"
+msgstr "Glossary Item"
+
+#: ../posttypes/fau-posttype-glossary.php:27
+msgid "Glossar"
+msgstr "Glossary"
+
+#: ../posttypes/fau-posttype-glossary.php:28
+msgid "Übergeordneter Glossar-Eintrag"
+msgstr "Parent Glossary item"
+
+#: ../posttypes/fau-posttype-glossary.php:29
+msgid "Alle Glossar-Einträge"
+msgstr "All Glossary items"
+
+#: ../posttypes/fau-posttype-glossary.php:30
+msgid "Eintrag anzeigen"
+msgstr "View item"
+
+#: ../posttypes/fau-posttype-glossary.php:31
+msgid "Glossar-Eintrag hinzufügen"
+msgstr "Add new Glossary item"
+
+#: ../posttypes/fau-posttype-glossary.php:32
+msgid "Neuer Glossar-Eintrag"
+msgstr "New Glossary item"
+
+#: ../posttypes/fau-posttype-glossary.php:33
+msgid "Eintrag bearbeiten"
+msgstr "Edit item"
+
+#: ../posttypes/fau-posttype-glossary.php:34
+msgid "Eintrag aktualisieren"
+msgstr "Update item"
+
+#: ../posttypes/fau-posttype-glossary.php:35
+msgid "Glossar-Eintrag suchen"
+msgstr "Search Glossary item"
+
+#: ../posttypes/fau-posttype-glossary.php:36
+msgid "Keine Glossar-Einträge gefunden"
+msgstr "No Glossary items found"
+
+#: ../posttypes/fau-posttype-glossary.php:37
+msgid "Keine Glossar-Einträge im Papierkorb gefunden"
+msgstr "No Glossary items found in Trash"
+
+#: ../posttypes/fau-posttype-glossary.php:46
+msgid "glossar"
+msgstr "glossary"
+
+#: ../posttypes/fau-posttype-glossary.php:47
+msgid "Glossar-Informationen"
+msgstr "Glossary information"
+
+#: ../posttypes/fau-posttype-imagelink.php:9
+msgid "Bildlink-Kategorien"
+msgstr "Imagelink Categories"
+
+#: ../posttypes/fau-posttype-imagelink.php:24
+msgctxt "Post Type General Name"
+msgid "Bildlinks"
+msgstr "Imagelinks"
+
+#: ../posttypes/fau-posttype-imagelink.php:25
+msgctxt "Post Type Singular Name"
+msgid "Bildlink"
+msgstr "Imagelink"
+
+#: ../posttypes/fau-posttype-imagelink.php:26
+msgid "Bildlinks"
+msgstr "Imagelinks"
+
+#: ../posttypes/fau-posttype-imagelink.php:27
+msgid "Übergeordneter Bildlink"
+msgstr "Parent Imagelink"
+
+#: ../posttypes/fau-posttype-imagelink.php:28
+msgid "Alle Bildlinks"
+msgstr "All Imagelinks"
+
+#: ../posttypes/fau-posttype-imagelink.php:29
+msgid "Bildlink anzeigen"
+msgstr "Show Imagelinks"
+
+#: ../posttypes/fau-posttype-imagelink.php:30
+msgid "Neuen Bildlink einfügen"
+msgstr "Add new Imagelink"
+
+#: ../posttypes/fau-posttype-imagelink.php:31
+msgid "Neuer Bildlink"
+msgstr "New Imagelink"
+
+#: ../posttypes/fau-posttype-imagelink.php:32
+msgid "Bildlink bearbeiten"
+msgstr "Edit Imagelink"
+
+#: ../posttypes/fau-posttype-imagelink.php:33
+msgid "Bildlink aktualisieren"
+msgstr "Update Imagelink"
+
+#: ../posttypes/fau-posttype-imagelink.php:34
+msgid "Bildlink suchen"
+msgstr "Search Imagelink"
+
+#: ../posttypes/fau-posttype-imagelink.php:35
+msgid "Keine Bildlinks gefunden"
+msgstr "No Imagelinks found"
+
+#: ../posttypes/fau-posttype-imagelink.php:36
+msgid "Keine Bildlinks im Papierkorb gefunden"
+msgstr "No Imagelinks found in Trash"
+
+#: ../posttypes/fau-posttype-imagelink.php:39
+msgid "imagelink"
+msgstr "imagelink"
+
+#: ../posttypes/fau-posttype-imagelink.php:40
+msgid "Bildlink-Eigenschaften"
+msgstr "Imagelink information"
+
+#: ../posttypes/fau-posttype-person.php:9
+msgid "Personen-Kategorien"
+msgstr "Person Categories"
+
+#: ../posttypes/fau-posttype-person.php:25
+msgctxt "Post Type General Name"
+msgid "Personen"
+msgstr "Persons"
+
+#: ../posttypes/fau-posttype-person.php:26
+msgctxt "Post Type Singular Name"
+msgid "Person"
+msgstr "Person"
+
+#: ../posttypes/fau-posttype-person.php:27
+msgid "Personen"
+msgstr "Persons"
+
+#: ../posttypes/fau-posttype-person.php:28
+msgid "Übergeordnete Person"
+msgstr "Parent Person"
+
+#: ../posttypes/fau-posttype-person.php:29
+msgid "Alle Personen"
+msgstr "All Persons"
+
+#: ../posttypes/fau-posttype-person.php:30
+msgid "Person ansehen"
+msgstr "Show Person"
+
+#: ../posttypes/fau-posttype-person.php:31
+msgid "Person hinzufügen"
+msgstr "Add new Person"
+
+#: ../posttypes/fau-posttype-person.php:32
+msgid "Neue Person"
+msgstr "New Person"
+
+#: ../posttypes/fau-posttype-person.php:33
+msgid "Person bearbeiten"
+msgstr "Edit Person"
+
+#: ../posttypes/fau-posttype-person.php:34
+msgid "Person aktualisieren"
+msgstr "Update Person"
+
+#: ../posttypes/fau-posttype-person.php:35
+msgid "Personen suchen"
+msgstr "Search Persons"
+
+#: ../posttypes/fau-posttype-person.php:36
+msgid "Keine Personen gefunden"
+msgstr "No Persons found"
+
+#: ../posttypes/fau-posttype-person.php:37
+msgid "Keine Personen in Papierkorb gefunden"
+msgstr "No Persones found in Trash"
+
+#: ../posttypes/fau-posttype-person.php:46
+msgid "person"
+msgstr "persond"
+
+#: ../posttypes/fau-posttype-person.php:47
+msgid "Personeninformationen"
+msgstr "Person information"
+
+#: ../posttypes/fau-posttype-synonym.php:9
+msgid "Synonym-Kategorien"
+msgstr "Synonym Categories"
+
+#: ../posttypes/fau-posttype-synonym.php:25
+msgctxt "Post Type General Name"
+msgid "Synonyme"
+msgstr "Synonyms"
+
+#: ../posttypes/fau-posttype-synonym.php:26
+msgctxt "Post Type Singular Name"
+msgid "Synonym"
+msgstr "Synonym"
+
+#: ../posttypes/fau-posttype-synonym.php:27
+msgid "Synonyme"
+msgstr "Synonyms"
+
+#: ../posttypes/fau-posttype-synonym.php:28
+msgid "Übergeordnete Synonyme"
+msgstr "Parent Synonym"
+
+#: ../posttypes/fau-posttype-synonym.php:29
+msgid "Alle Synonyme"
+msgstr "All Synonyms"
+
+#: ../posttypes/fau-posttype-synonym.php:30
+msgid "Synonyme ansehen"
+msgstr "View Synonym"
+
+#: ../posttypes/fau-posttype-synonym.php:31
+msgid "Synonym hinzufügen"
+msgstr "Add new Synonym"
+
+#: ../posttypes/fau-posttype-synonym.php:32
+msgid "Neues Synonym"
+msgstr "New Synonym"
+
+#: ../posttypes/fau-posttype-synonym.php:33
+msgid "Synonym bearbeiten"
+msgstr "Edit Synonym"
+
+#: ../posttypes/fau-posttype-synonym.php:34
+msgid "Synonym aktualisieren"
+msgstr "Update Synonym"
+
+#: ../posttypes/fau-posttype-synonym.php:35
+msgid "Synonym suchen"
+msgstr "Search Synonyms"
+
+#: ../posttypes/fau-posttype-synonym.php:36
+msgid "Keine Synonyme gefunden"
+msgstr "No Synonyms found"
+
+#: ../posttypes/fau-posttype-synonym.php:37
+msgid "Keine Synonyme im Papierkorb gefunden"
+msgstr "No Synonyms found in Trash"
+
+#: ../posttypes/fau-posttype-synonym.php:46
+msgid "synonym"
+msgstr "synonym"
+
+#: ../posttypes/fau-posttype-synonym.php:47
+msgid "Synonym Informationen"
+msgstr "Synonym information"
+
+#: ../shortcodes/events-shortcode.php:8 ../widgets/fau-event-widget.php:114
+msgid "Das Termin-Plugin ist nicht vorhanden."
+msgstr "There is no Event Plugin."
+
+#: ../shortcodes/events-shortcode.php:83 ../widgets/fau-event-widget.php:229
+msgid "Keine bevorstehenden Termine"
+msgstr "No Events found"
+
+#: ../shortcodes/events-shortcode.php:92 ../widgets/fau-event-widget.php:250
+#, php-format
+msgid "%s Uhr bis %s Uhr"
+msgstr "%s to %s"
+
+#: ../shortcodes/events-shortcode.php:94
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+#: ../shortcodes/events-shortcode.php:101 ../widgets/fau-event-widget.php:271
+msgid "Mehr Veranstaltungen"
+msgstr "More Events"
+
+#: ../shortcodes/events-shortcode.php:106
+msgid "Abonnement"
+msgstr "Subscribe"
+
+#: ../widgets/fau-ad-widget.php:20
+msgid "Banner: "
+msgstr "Banner:"
+
+#: ../widgets/fau-ad-widget.php:48
+msgid "Werbung"
+msgstr "Ad"
+
+#: ../widgets/fau-event-widget.php:12 ../widgets/fau-event-widget.php:21
+msgid "Nächste Termine"
+msgstr "Next Event"
+
+#: ../widgets/fau-event-widget.php:13
+msgid "Nächste Termine anzeigen"
+msgstr "Show next Events"
+
+#: ../widgets/fau-event-widget.php:147
+msgid "Titel:"
+msgstr "Title:"
+
+#: ../widgets/fau-event-widget.php:151
+msgid "Anzahl der Termine:"
+msgstr "Number of Events:"
+
+#: ../widgets/fau-event-widget.php:155
+msgid "Filter:"
+msgstr "Filter:"
+
+#: ../widgets/fau-event-widget.php:159
+msgid "Termine mit diesen Kategorien"
+msgstr "Events with these Categories"
+
+#: ../widgets/fau-event-widget.php:167
+msgid "Keine Kategorien vorhanden."
+msgstr "There are no Categories."
+
+#: ../widgets/fau-event-widget.php:174
+msgid "oder Termine mit diesen Schlagworte"
+msgstr "or Events with these Tags"
+
+#: ../widgets/fau-event-widget.php:182
+msgid "Keine Schlagworte vorhanden."
+msgstr "There are no Tags."
+
+#: ../widgets/fau-event-widget.php:189
+msgid "oder diese Termine"
+msgstr "or these Events"
+
+#: ../widgets/fau-event-widget.php:197
+msgid "Keine Termine vorhanden."
+msgstr "There are no Events."
+
+#: ../widgets/fau-event-widget.php:203
+msgid "Abonnement-Link (statische Seite):"
+msgstr "Subscribe link:"
+
+#: ../widgets/fau-event-widget.php:208
+msgid "— Auswählen —"
+msgstr "- Choose -"
+
+#: ../widgets/fau-event-widget.php:214
+msgid "Abonnement-Link anzeigen"
+msgstr "Show subscribe link"

@@ -6,7 +6,7 @@ function synonyms_taxonomy() {
 		'synonym',   		 //post type name
 		array(
 			'hierarchical' 		=> true,
-			'label' 			=> 'Synonym-Kategorien',  //Display name
+			'label' 			=> __('Synonym-Kategorien', 'fau'),  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
 					'slug' 			=> 'synonyms', // This controls the base slug that will display before each term
@@ -20,23 +20,21 @@ add_action( 'init', 'synonyms_taxonomy');
 
 // Register Custom Post Type
 function synonym_post_type() {	
-
-	load_plugin_textdomain( 'synonym', false, dirname( plugin_basename( __FILE__ ) ) . '/../languages/' ); 
 	
 	$labels = array(
-		'name'                => _x( 'Synonyms', 'Post Type General Name', 'synonym' ),
-		'singular_name'       => _x( 'Synonym', 'Post Type Singular Name', 'synonym' ),
-		'menu_name'           => __( 'Synonyms', 'synonym' ),
-		'parent_item_colon'   => __( 'Parent Synonym', 'synonym' ),
-		'all_items'           => __( 'All Synonyms', 'synonym' ),
-		'view_item'           => __( 'View Synonym', 'synonym' ),
-		'add_new_item'        => __( 'Add New Synonym', 'synonym' ),
-		'add_new'             => __( 'New Synonym', 'synonym' ),
-		'edit_item'           => __( 'Edit Synonym', 'synonym' ),
-		'update_item'         => __( 'Update Synonym', 'synonym' ),
-		'search_items'        => __( 'Search synonyms', 'synonym' ),
-		'not_found'           => __( 'No synonyms found', 'synonym' ),
-		'not_found_in_trash'  => __( 'No synonyms found in Trash', 'synonym' ),
+		'name'                => _x( 'Synonyme', 'Post Type General Name', 'fau' ),
+		'singular_name'       => _x( 'Synonym', 'Post Type Singular Name', 'fau' ),
+		'menu_name'           => __( 'Synonyme', 'fau' ),
+		'parent_item_colon'   => __( 'Übergeordnete Synonyme', 'fau' ),
+		'all_items'           => __( 'Alle Synonyme', 'fau' ),
+		'view_item'           => __( 'Synonyme ansehen', 'fau' ),
+		'add_new_item'        => __( 'Synonym hinzufügen', 'fau' ),
+		'add_new'             => __( 'Neues Synonym', 'fau' ),
+		'edit_item'           => __( 'Synonym bearbeiten', 'fau' ),
+		'update_item'         => __( 'Synonym aktualisieren', 'fau' ),
+		'search_items'        => __( 'Synonym suchen', 'fau' ),
+		'not_found'           => __( 'Keine Synonyme gefunden', 'fau' ),
+		'not_found_in_trash'  => __( 'Keine Synonyme im Papierkorb gefunden', 'fau' ),
 	);
 	$rewrite = array(
 		'slug'                => 'synonym',
@@ -45,8 +43,8 @@ function synonym_post_type() {
 		'feeds'               => true,
 	);
 	$args = array(
-		'label'               => __( 'synonym', 'synonym' ),
-		'description'         => __( 'Synonym information', 'synonym' ),
+		'label'               => __( 'synonym', 'fau' ),
+		'description'         => __( 'Synonym Informationen', 'fau' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'thumbnail' ),
 		'taxonomies'          => array( 'synonyms_category' ),
@@ -98,7 +96,7 @@ function synonym_restrict_manage_posts() {
 		foreach ($filters as $tax_slug) {
 			$tax_obj = get_taxonomy($tax_slug);
 			wp_dropdown_categories(array(
-                'show_option_all' => sprintf('Alle %s anzeigen', $tax_obj->label),
+                'show_option_all' => sprintf(__('Alle %s anzeigen', 'fau'), $tax_obj->label),
                 'taxonomy' => $tax_slug,
                 'name' => $tax_obj->name,
                 'orderby' => 'name',

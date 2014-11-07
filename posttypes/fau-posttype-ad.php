@@ -6,7 +6,7 @@ function ads_taxonomy() {
 		'ad',   		 //post type name
 		array(
 			'hierarchical' 		=> true,
-			'label' 			=> 'Werbe-Kategorien',  //Display name
+			'label' 			=> __('Werbe-Kategorien', 'fau'),  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
 					'slug' 			=> 'ads', // This controls the base slug that will display before each term
@@ -20,23 +20,21 @@ add_action( 'init', 'ads_taxonomy');
 
 // Register Custom Post Type
 function ad_post_type() {
-
-	load_plugin_textdomain( 'ad', false, dirname( plugin_basename( __FILE__ ) ) . '/../languages/' ); 
 	
 	$labels = array(
-		'name'                => _x( 'Ads', 'Post Type General Name', 'ad' ),
-		'singular_name'       => _x( 'Ad', 'Post Type Singular Name', 'ad' ),
-		'menu_name'           => __( 'Ads', 'ad' ),
-		'parent_item_colon'   => __( 'Parent Ad:', 'ad' ),
-		'all_items'           => __( 'All Ads', 'ad' ),
-		'view_item'           => __( 'View Ad', 'ad' ),
-		'add_new_item'        => __( 'Add New Ad', 'ad' ),
-		'add_new'             => __( 'New Ad', 'ad' ),
-		'edit_item'           => __( 'Edit Ad', 'ad' ),
-		'update_item'         => __( 'Update Ad', 'ad' ),
-		'search_items'        => __( 'Search ads', 'ad' ),
-		'not_found'           => __( 'No ads found', 'ad' ),
-		'not_found_in_trash'  => __( 'No ads found in Trash', 'ad' ),
+		'name'                => _x( 'Werbebanner', 'Post Type General Name', 'fau' ),
+		'singular_name'       => _x( 'Werbebanner', 'Post Type Singular Name', 'fau' ),
+		'menu_name'           => __( 'Werbebanner', 'fau' ),
+		'parent_item_colon'   => __( 'Übergeordneter Werbebanner', 'fau' ),
+		'all_items'           => __( 'Alle Werbebanner', 'fau' ),
+		'view_item'           => __( 'Werbebanner anzeigen', 'fau' ),
+		'add_new_item'        => __( 'Neues Werbebanner einfügen', 'fau' ),
+		'add_new'             => __( 'Neues Werbebanner', 'fau' ),
+		'edit_item'           => __( 'Werbebanner bearbeiten', 'fau' ),
+		'update_item'         => __( 'Werbebanner aktualisieren', 'fau' ),
+		'search_items'        => __( 'Werbebanner suchen', 'fau' ),
+		'not_found'           => __( 'Keine Werbebanner gefunden', 'fau' ),
+		'not_found_in_trash'  => __( 'Keine Werbebanner im Papierkorb gefunden', 'fau' ),
 	);
 	$rewrite = array(
 		'slug'                => 'ad',
@@ -45,8 +43,8 @@ function ad_post_type() {
 		'feeds'               => false,
 	);
 	$args = array(
-		'label'               => __( 'ad', 'ad' ),
-		'description'         => __( 'Ad-Banners', 'ad' ),
+		'label'               => __( 'werbebanner', 'fau' ),
+		'description'         => __( 'Werbebanner', 'fau' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'thumbnail', ),
 		'taxonomies'          => array( 'ads_category' ),
@@ -98,7 +96,7 @@ function ad_restrict_manage_posts() {
 		foreach ($filters as $tax_slug) {
 			$tax_obj = get_taxonomy($tax_slug);
 			wp_dropdown_categories(array(
-                'show_option_all' => sprintf('Alle %s anzeigen', $tax_obj->label),
+                'show_option_all' => sprintf(__('Alle %s anzeigen', 'fau'), $tax_obj->label),
                 'taxonomy' => $tax_slug,
                 'name' => $tax_obj->name,
                 'orderby' => 'name',

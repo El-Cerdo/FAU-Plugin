@@ -6,7 +6,7 @@ function persons_taxonomy() {
 		'person',   		 //post type name
 		array(
 			'hierarchical' 		=> true,
-			'label' 			=> 'Personen-Kategorien',  //Display name
+			'label' 			=> __('Personen-Kategorien', 'fau'),  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
 					'slug' 			=> 'persons', // This controls the base slug that will display before each term
@@ -20,23 +20,21 @@ add_action( 'init', 'persons_taxonomy');
 
 // Register Custom Post Type
 function person_post_type() {	
-
-	load_plugin_textdomain( 'person', false, dirname( plugin_basename( __FILE__ ) ) . '/../languages/' ); 
 	
 	$labels = array(
-		'name'                => _x( 'Persons', 'Post Type General Name', 'person' ),
-		'singular_name'       => _x( 'Person', 'Post Type Singular Name', 'person' ),
-		'menu_name'           => __( 'Persons', 'person' ),
-		'parent_item_colon'   => __( 'Parent Person', 'person' ),
-		'all_items'           => __( 'All Persons', 'person' ),
-		'view_item'           => __( 'View Person', 'person' ),
-		'add_new_item'        => __( 'Add New Person', 'person' ),
-		'add_new'             => __( 'New Person', 'person' ),
-		'edit_item'           => __( 'Edit Person', 'person' ),
-		'update_item'         => __( 'Update Person', 'person' ),
-		'search_items'        => __( 'Search persons', 'person' ),
-		'not_found'           => __( 'No persons found', 'person' ),
-		'not_found_in_trash'  => __( 'No persons found in Trash', 'person' ),
+		'name'                => _x( 'Personen', 'Post Type General Name', 'fau' ),
+		'singular_name'       => _x( 'Person', 'Post Type Singular Name', 'fau' ),
+		'menu_name'           => __( 'Personen', 'fau' ),
+		'parent_item_colon'   => __( 'Übergeordnete Person', 'fau' ),
+		'all_items'           => __( 'Alle Personen', 'fau' ),
+		'view_item'           => __( 'Person ansehen', 'fau' ),
+		'add_new_item'        => __( 'Person hinzufügen', 'fau' ),
+		'add_new'             => __( 'Neue Person', 'fau' ),
+		'edit_item'           => __( 'Person bearbeiten', 'fau' ),
+		'update_item'         => __( 'Person aktualisieren', 'fau' ),
+		'search_items'        => __( 'Personen suchen', 'fau' ),
+		'not_found'           => __( 'Keine Personen gefunden', 'fau' ),
+		'not_found_in_trash'  => __( 'Keine Personen in Papierkorb gefunden', 'fau' ),
 	);
 	$rewrite = array(
 		'slug'                => 'person',
@@ -45,8 +43,8 @@ function person_post_type() {
 		'feeds'               => true,
 	);
 	$args = array(
-		'label'               => __( 'person', 'person' ),
-		'description'         => __( 'Person information', 'person' ),
+		'label'               => __( 'person', 'fau' ),
+		'description'         => __( 'Personeninformationen', 'fau' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'thumbnail' ),
 		'taxonomies'          => array( 'persons_category' ),
@@ -98,7 +96,7 @@ function person_restrict_manage_posts() {
 		foreach ($filters as $tax_slug) {
 			$tax_obj = get_taxonomy($tax_slug);
 			wp_dropdown_categories(array(
-                'show_option_all' => sprintf('Alle %s anzeigen', $tax_obj->label),
+                'show_option_all' => sprintf(__('Alle %s anzeigen', 'fau'), $tax_obj->label),
                 'taxonomy' => $tax_slug,
                 'name' => $tax_obj->name,
                 'orderby' => 'name',

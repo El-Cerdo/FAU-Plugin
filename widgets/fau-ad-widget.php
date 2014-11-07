@@ -5,7 +5,7 @@ class FAUAdWidget extends WP_Widget
 {
 	function FAUAdWidget()
 	{
-		$widget_ops = array('classname' => 'FAUAdWidget', 'description' => 'Werbebanner anzeigen' );
+		$widget_ops = array('classname' => 'FAUAdWidget', 'description' => __('Werbebanner anzeigen', 'fau') );
 		$this->WP_Widget('FAUAdWidget', 'Werbebanner', $widget_ops);
 	}
 
@@ -17,7 +17,7 @@ class FAUAdWidget extends WP_Widget
 		$ads = query_posts('post_type=ad');
 		
 		echo '<p>';
-			echo '<label for="'.$this->get_field_id('id').'">Banner: ';
+			echo '<label for="'.$this->get_field_id('id').'">' . __('Banner: ', 'fau');
 				echo '<select id="'.$this->get_field_id('id').'" name="'.$this->get_field_name('id').'">';
 					foreach($ads as $item)
 					{
@@ -45,7 +45,7 @@ class FAUAdWidget extends WP_Widget
 		echo $before_widget;
 		echo '<div class="banner-ad">';
 			echo '<a class="banner-ad-notice" href="'.get_permalink(174955).'">';
-			  _e( 'Werbung' );
+			  _e( 'Werbung', 'fau' );
 			echo '</a>';
 		$id = empty($instance['id']) ? ' ' : $instance['id'];
 

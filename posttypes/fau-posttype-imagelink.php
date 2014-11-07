@@ -6,7 +6,7 @@ function imagelink_taxonomy() {
 		'imagelink',   		 //post type name
 		array(
 			'hierarchical' 		=> true,
-			'label' 			=> 'Bildlink-Kategorien',  //Display name
+			'label' 			=> __('Bildlink-Kategorien', 'fau'),  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
 					'slug' 			=> 'imagelinks', // This controls the base slug that will display before each term
@@ -20,26 +20,24 @@ add_action( 'init', 'imagelink_taxonomy');
 // Register Custom Post Type
 function imagelink_post_type() {
 
-	load_plugin_textdomain( 'imagelink', false, dirname( plugin_basename( __FILE__ ) ) . '/../languages/' ); 
-
 	$labels = array(
-		'name'                => _x( 'Imagelinks', 'Post Type General Name', 'imagelink' ),
-		'singular_name'       => _x( 'Imagelink', 'Post Type Singular Name', 'imagelink' ),
-		'menu_name'           => __( 'Imagelinks', 'imagelink' ),
-		'parent_item_colon'   => __( 'Parent Imagelink', 'imagelink' ),
-		'all_items'           => __( 'All Imagelinks', 'imagelink' ),
-		'view_item'           => __( 'View Imagelink', 'imagelink' ),
-		'add_new_item'        => __( 'Add New Imagelink', 'imagelink' ),
-		'add_new'             => __( 'New Imagelink', 'imagelink' ),
-		'edit_item'           => __( 'Edit Imagelink', 'imagelink' ),
-		'update_item'         => __( 'Update Imagelink', 'imagelink' ),
-		'search_items'        => __( 'Search imagelinks', 'imagelink' ),
-		'not_found'           => __( 'No Imagelinks found', 'imagelink' ),
-		'not_found_in_trash'  => __( 'No Imagelinks found in Trash', 'imagelink' ),
+		'name'                => _x( 'Bildlinks', 'Post Type General Name', 'fau' ),
+		'singular_name'       => _x( 'Bildlink', 'Post Type Singular Name', 'fau' ),
+		'menu_name'           => __( 'Bildlinks', 'fau' ),
+		'parent_item_colon'   => __( 'Übergeordneter Bildlink', 'fau' ),
+		'all_items'           => __( 'Alle Bildlinks', 'fau' ),
+		'view_item'           => __( 'Bildlink anzeigen', 'fau' ),
+		'add_new_item'        => __( 'Neuen Bildlink einfügen', 'fau' ),
+		'add_new'             => __( 'Neuer Bildlink', 'fau' ),
+		'edit_item'           => __( 'Bildlink bearbeiten', 'fau' ),
+		'update_item'         => __( 'Bildlink aktualisieren', 'fau' ),
+		'search_items'        => __( 'Bildlink suchen', 'fau' ),
+		'not_found'           => __( 'Keine Bildlinks gefunden', 'fau' ),
+		'not_found_in_trash'  => __( 'Keine Bildlinks im Papierkorb gefunden', 'fau' ),
 	);
 	$args = array(
-		'label'               => __( 'imagelink', 'imagelink' ),
-		'description'         => __( 'Imagelink information', 'imagelink' ),
+		'label'               => __( 'imagelink', 'fau' ),
+		'description'         => __( 'Bildlink-Eigenschaften', 'fau' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'thumbnail' ),
 		'taxonomies'          => array( 'imagelinks_category' ),
@@ -91,7 +89,7 @@ function imagelink_restrict_manage_posts() {
 		foreach ($filters as $tax_slug) {
 			$tax_obj = get_taxonomy($tax_slug);
 			wp_dropdown_categories(array(
-                'show_option_all' => sprintf('Alle %s anzeigen', $tax_obj->label),
+                'show_option_all' => sprintf(__('Alle %s anzeigen', 'fau'), $tax_obj->label),
                 'taxonomy' => $tax_slug,
                 'name' => $tax_obj->name,
                 'orderby' => 'name',

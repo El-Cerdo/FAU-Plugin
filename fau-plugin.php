@@ -26,3 +26,5 @@ require_once('filters/fau-admin.php');
 require_once('filters/fau-event-content.php');
 
 require_once('shortcodes/events-shortcode.php');
+
+load_plugin_textdomain( 'fau', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' ); 

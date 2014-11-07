@@ -6,7 +6,7 @@ function glossary_taxonomy() {
 		'glossary',   		 //post type name
 		array(
 			'hierarchical' 		=> true,
-			'label' 			=> 'Glossar-Kategorien',  //Display name
+			'label' 			=> __('Glossar-Kategorien', 'fau'),  //Display name
 			'query_var' 		=> true,
 			'rewrite'			=> array(
 					'slug' 			=> 'glossaries', // This controls the base slug that will display before each term
@@ -20,23 +20,21 @@ add_action( 'init', 'glossary_taxonomy');
 
 // Register Custom Post Type
 function glossary_post_type() {	
-
-	load_plugin_textdomain( 'glossary', false, dirname( plugin_basename( __FILE__ ) ) . '/../languages/' ); 
 	
 	$labels = array(
-		'name'                => _x( 'Glossary items', 'Post Type General Name', 'glossary' ),
-		'singular_name'       => _x( 'Glossary item', 'Post Type Singular Name', 'glossary' ),
-		'menu_name'           => __( 'Glossary', 'glossary' ),
-		'parent_item_colon'   => __( 'Parent item', 'glossary' ),
-		'all_items'           => __( 'All Glossary items', 'glossary' ),
-		'view_item'           => __( 'View item', 'glossary' ),
-		'add_new_item'        => __( 'Add New Glossary item', 'glossary' ),
-		'add_new'             => __( 'New Glossary item', 'glossary' ),
-		'edit_item'           => __( 'Edit item', 'glossary' ),
-		'update_item'         => __( 'Update item', 'glossary' ),
-		'search_items'        => __( 'Search Glossary items', 'glossary' ),
-		'not_found'           => __( 'No Glossary items found', 'glossary' ),
-		'not_found_in_trash'  => __( 'No Glossary items found in Trash', 'glossary' ),
+		'name'                => _x( 'Glossar-Einträge', 'Post Type General Name', 'fau' ),
+		'singular_name'       => _x( 'Glossar-Eintrag', 'Post Type Singular Name', 'fau' ),
+		'menu_name'           => __( 'Glossar', 'fau' ),
+		'parent_item_colon'   => __( 'Übergeordneter Glossar-Eintrag', 'fau' ),
+		'all_items'           => __( 'Alle Glossar-Einträge', 'fau' ),
+		'view_item'           => __( 'Eintrag anzeigen', 'fau' ),
+		'add_new_item'        => __( 'Glossar-Eintrag hinzufügen', 'fau' ),
+		'add_new'             => __( 'Neuer Glossar-Eintrag', 'fau' ),
+		'edit_item'           => __( 'Eintrag bearbeiten', 'fau' ),
+		'update_item'         => __( 'Eintrag aktualisieren', 'fau' ),
+		'search_items'        => __( 'Glossar-Eintrag suchen', 'fau' ),
+		'not_found'           => __( 'Keine Glossar-Einträge gefunden', 'fau' ),
+		'not_found_in_trash'  => __( 'Keine Glossar-Einträge im Papierkorb gefunden', 'fau' ),
 	);
 	$rewrite = array(
 		'slug'                => 'glossary',
@@ -45,8 +43,8 @@ function glossary_post_type() {
 		'feeds'               => true,
 	);
 	$args = array(
-		'label'               => __( 'glossary', 'glossary' ),
-		'description'         => __( 'Glossary information', 'glossary' ),
+		'label'               => __( 'glossar', 'fau' ),
+		'description'         => __( 'Glossar-Informationen', 'fau' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'thumbnail' ),
 		'taxonomies'          => array( 'glossary_category' ),
@@ -98,7 +96,7 @@ function glossary_restrict_manage_posts() {
 		foreach ($filters as $tax_slug) {
 			$tax_obj = get_taxonomy($tax_slug);
 			wp_dropdown_categories(array(
-                'show_option_all' => sprintf('Alle %s anzeigen', $tax_obj->label),
+                'show_option_all' => sprintf(__('Alle %s anzeigen', 'fau'), $tax_obj->label),
                 'taxonomy' => $tax_slug,
                 'name' => $tax_obj->name,
                 'orderby' => 'name',
