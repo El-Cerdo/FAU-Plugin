@@ -83,7 +83,7 @@ class FAUMenuLogosWidget extends WP_Widget
 {
 	function FAUMenuLogosWidget()
 	{
-		$widget_ops = array('classname' => 'FAUMenuLogosWidget', 'description' => 'Logo-Leiste' );
+		$widget_ops = array('classname' => 'FAUMenuLogosWidget', 'description' => __('Logo-Leiste', 'fau') );
 		$this->WP_Widget('FAUMenuLogosWidget', 'Logo-Leiste', $widget_ops);
 	}
 
@@ -95,7 +95,7 @@ class FAUMenuLogosWidget extends WP_Widget
 		$menus = get_terms('nav_menu');
 		
 		echo '<p>';
-			echo '<label for="'.$this->get_field_id('menu-slug').'">Menü: ';
+			echo '<label for="'.$this->get_field_id('menu-slug').'">' . __('Menü', 'fau') . ': ';
 				echo '<select id="'.$this->get_field_id('menu-slug').'" name="'.$this->get_field_name('menu-slug').'">';
 					foreach($menus as $item)
 					{
@@ -124,8 +124,8 @@ class FAUMenuLogosWidget extends WP_Widget
 		
 		echo '<div class="container">';
 			echo '<div class="logos-menu-nav">';
-				echo '<a id="logos-menu-prev" href="#">Zurück</a>';
-				echo '<a id="logos-menu-next" href="#">Weiter</a>';
+				echo '<a id="logos-menu-prev" href="#">'. __('Zurück', 'fau') . '</a>';
+				echo '<a id="logos-menu-next" href="#">'. __('Weiter', 'fau') . '</a>';
 			echo '</div>';
 		echo '</div>';
 		$slug = empty($instance['menu-slug']) ? ' ' : $instance['menu-slug'];
@@ -135,7 +135,7 @@ class FAUMenuLogosWidget extends WP_Widget
 			wp_nav_menu( array( 'menu' => $slug, 'container' => false, 'items_wrap' => '%3$s', 'link_before' => '', 'link_after' => '', 'walker' => new Walker_Logo_Menu));
 		}
 		
-		echo '<div class="container"><a id="logos-menu-playpause" href="#"><span class="play">Abspielen</span><span class="pause">Pause</span></a></div>';
+		echo '<div class="container"><a id="logos-menu-playpause" href="#"><span class="play">'. __('Abspielen', 'fau') . '</span><span class="pause">'. __('Pause', 'fau') . '</span></a></div>';
 		
 		echo $after_widget;
 	}

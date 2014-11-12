@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FAU-Projekt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-07 15:37+0100\n"
+"POT-Creation-Date: 2014-11-12 10:58+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: RRZE-Webteam\n"
@@ -380,8 +380,8 @@ msgid "Abonnement"
 msgstr "Subscribe"
 
 #: ../widgets/fau-ad-widget.php:20
-msgid "Banner: "
-msgstr "Banner:"
+msgid "Banner"
+msgstr "Banner"
 
 #: ../widgets/fau-ad-widget.php:48
 msgid "Werbung"
@@ -395,13 +395,14 @@ msgstr "Next Event"
 msgid "Nächste Termine anzeigen"
 msgstr "Show next Events"
 
-#: ../widgets/fau-event-widget.php:147
-msgid "Titel:"
-msgstr "Title:"
+#: ../widgets/fau-event-widget.php:147 ../widgets/fau-menu-widget.php:162
+#: ../widgets/fau-person-widget.php:31 ../widgets/fau-tagcloud-widget.php:94
+msgid "Titel"
+msgstr "Title"
 
 #: ../widgets/fau-event-widget.php:151
-msgid "Anzahl der Termine:"
-msgstr "Number of Events:"
+msgid "Anzahl der Termine"
+msgstr "Number of Events"
 
 #: ../widgets/fau-event-widget.php:155
 msgid "Filter:"
@@ -432,8 +433,8 @@ msgid "Keine Termine vorhanden."
 msgstr "There are no Events."
 
 #: ../widgets/fau-event-widget.php:203
-msgid "Abonnement-Link (statische Seite):"
-msgstr "Subscribe link:"
+msgid "Abonnement-Link (statische Seite)"
+msgstr "Subscribe link"
 
 #: ../widgets/fau-event-widget.php:208
 msgid "— Auswählen —"
@@ -442,3 +443,52 @@ msgstr "- Choose -"
 #: ../widgets/fau-event-widget.php:214
 msgid "Abonnement-Link anzeigen"
 msgstr "Show subscribe link"
+
+#: ../widgets/fau-logo-widget.php:86
+msgid "Logo-Leiste"
+msgstr "Logo bar"
+
+#: ../widgets/fau-logo-widget.php:98 ../widgets/fau-menu-widget.php:167
+#: ../widgets/fau-tagcloud-widget.php:99
+msgid "Menü"
+msgstr "Menu"
+
+#: ../widgets/fau-logo-widget.php:127
+msgid "Zurück"
+msgstr "Previous"
+
+#: ../widgets/fau-logo-widget.php:128
+msgid "Weiter"
+msgstr "Next"
+
+#: ../widgets/fau-logo-widget.php:138
+msgid "Abspielen"
+msgstr "Play"
+
+#: ../widgets/fau-logo-widget.php:138
+msgid "Pause"
+msgstr "Pause"
+
+#: ../widgets/fau-menu-widget.php:131
+msgid "Mehr …"
+msgstr "More ..."
+
+#: ../widgets/fau-menu-widget.php:148
+msgid "Bebildertes Menü der Unterseiten"
+msgstr ""
+
+#: ../widgets/fau-menu-widget.php:180
+msgid "Beschreibung anzeigen"
+msgstr "Show description"
+
+#: ../widgets/fau-person-widget.php:8
+msgid "Personen-Visitenkarte anzeigen"
+msgstr ""
+
+#: ../widgets/fau-person-widget.php:37
+msgid "Person"
+msgstr "Person"
+
+#: ../widgets/fau-tagcloud-widget.php:81
+msgid "Tagcloud-Menü"
+msgstr "Tagcloud menu"

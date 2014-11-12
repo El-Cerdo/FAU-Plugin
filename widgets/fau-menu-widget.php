@@ -128,7 +128,7 @@ class Walker_Subpages_Menu extends Walker_Nav_Menu
 		}
 		elseif($this->level == 2 && $this->count[$this->level] == 6 && $this->showdescription == FALSE)
 		{
-			$output .= '<li class="more"><a href="'.$this->element->url.'">Mehr …</a></li>';
+			$output .= '<li class="more"><a href="'.$this->element->url.'">'. __('Mehr …', 'fau').'</a></li>';
 		}
 		
 	/*	if($this->level == 1)
@@ -145,7 +145,7 @@ class FAUMenuSubpagesWidget extends WP_Widget
 {
 	function FAUMenuSubpagesWidget()
 	{
-		$widget_ops = array('classname' => 'FAUMenuSubpagesWidget', 'description' => 'Bebildertes Menü der Unterseiten' );
+		$widget_ops = array('classname' => 'FAUMenuSubpagesWidget', 'description' => __('Bebildertes Menü der Unterseiten', 'fau') );
 		$this->WP_Widget('FAUMenuSubpagesWidget', 'Portal-Menü', $widget_ops);
 	}
 
@@ -159,12 +159,12 @@ class FAUMenuSubpagesWidget extends WP_Widget
 		$menus = get_terms('nav_menu');
 		
 		echo '<p>';
-			echo '<label for="'.$this->get_field_id('title').'">Titel: </label>';
+			echo '<label for="'.$this->get_field_id('title').'">'. __('Titel', 'fau').': </label>';
 			echo '<input type="text" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" value="'.$title.'">';
 		echo '</p>';
 		
 		echo '<p>';
-			echo '<label for="'.$this->get_field_id('menu-slug').'">Menü: ';
+			echo '<label for="'.$this->get_field_id('menu-slug').'">' . __('Menü', 'fau') . ': ';
 				echo '<select id="'.$this->get_field_id('menu-slug').'" name="'.$this->get_field_name('menu-slug').'">';
 					foreach($menus as $item)
 					{
@@ -177,7 +177,7 @@ class FAUMenuSubpagesWidget extends WP_Widget
 		echo '</p>';
 		
 		echo '<p>';
-			echo '<label for="'.$this->get_field_id('showdescription').'">Beschreibung anzeigen: </label>';
+			echo '<label for="'.$this->get_field_id('showdescription').'">'. __('Beschreibung anzeigen', 'fau') . ': </label>';
 			echo '<input type="checkbox" id="'.$this->get_field_id('showdescription').'" name="'.$this->get_field_name('showdescription').'" value="TRUE" ';
 				if($showdescription) echo 'checked';
 			echo '>';

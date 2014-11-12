@@ -5,7 +5,7 @@ class FAUPersonWidget extends WP_Widget
 {
 	function FAUPersonWidget()
 	{
-		$widget_ops = array('classname' => 'FAUPersonWidget', 'description' => 'Personen-Visitenkarte anzeigen' );
+		$widget_ops = array('classname' => 'FAUPersonWidget', 'description' => __('Personen-Visitenkarte anzeigen', 'fau') );
 		$this->WP_Widget('FAUPersonWidget', 'Personen-Visitenkarte', $widget_ops);
 	}
 
@@ -28,13 +28,13 @@ class FAUPersonWidget extends WP_Widget
 		}
 		
 		echo '<p>';
-			echo '<label for="'.$this->get_field_id('title').'">Titel: ';
+			echo '<label for="'.$this->get_field_id('title').'">'. __('Titel', 'fau'). ': ';
 				echo '<input type="text" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" value="'.attribute_escape($title).'" />';
 			echo '</label>';
 		echo '</p>';
 		
 		echo '<p>';
-			echo '<label for="'.$this->get_field_id('id').'">Person: ';
+			echo '<label for="'.$this->get_field_id('id').'">' . __('Person', 'fau'). ': ';
 				echo '<select id="'.$this->get_field_id('id').'" name="'.$this->get_field_name('id').'">';
 					foreach($persons as $item)
 					{

@@ -17,7 +17,7 @@ class FAUAdWidget extends WP_Widget
 		$ads = query_posts('post_type=ad');
 		
 		echo '<p>';
-			echo '<label for="'.$this->get_field_id('id').'">' . __('Banner: ', 'fau');
+			echo '<label for="'.$this->get_field_id('id').'">' . __('Banner', 'fau') . ': ';
 				echo '<select id="'.$this->get_field_id('id').'" name="'.$this->get_field_name('id').'">';
 					foreach($ads as $item)
 					{

@@ -144,11 +144,11 @@ class Event_Widget extends WP_Widget {
         extract($args);
         ?>        
         <p>
-            <label for="<?php echo $title['id'] ?>"><?php _e('Titel:', 'fau') ?></label>
+            <label for="<?php echo $title['id'] ?>"><?php echo __('Titel', 'fau') . ': ' ?></label>
             <input class="widefat" id="<?php echo $title['id'] ?>" name="<?php echo $title['name'] ?>" type="text" value="<?php echo $title['value'] ?>" />
         </p>
         <p>
-            <label for="<?php echo $events_per_page['id'] ?>"><?php _e('Anzahl der Termine:', 'fau') ?></label>
+            <label for="<?php echo $events_per_page['id'] ?>"><?php echo __('Anzahl der Termine', 'fau') . ': ' ?></label>
             <input id="<?php echo $events_per_page['id'] ?>" name="<?php echo $events_per_page['name'] ?>" type="text" size="3" value="<?php echo $events_per_page['value'] ?>" />
         </p>
         <p class="event-limit-by-container">
@@ -200,7 +200,7 @@ class Event_Widget extends WP_Widget {
         </div>
         <br>
         <p>
-            <label for="<?php echo $subscribe_link['id'] ?>"><?php _e('Abonnement-Link (statische Seite):', 'fau') ?></label>
+            <label for="<?php echo $subscribe_link['id'] ?>"><?php echo __('Abonnement-Link (statische Seite)', 'fau') . ': ' ?></label>
             <?php wp_dropdown_pages(array(
                 'id' => $subscribe_link['id'],
                 'name' => $subscribe_link['name'],

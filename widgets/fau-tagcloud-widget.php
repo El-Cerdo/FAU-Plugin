@@ -78,7 +78,7 @@ class FAUMenuTagcloudWidget extends WP_Widget
 {
 	function FAUMenuTagcloudWidget()
 	{
-		$widget_ops = array('classname' => 'FAUMenuTagcloudWidget', 'description' => 'Tagcloud-Menü' );
+		$widget_ops = array('classname' => 'FAUMenuTagcloudWidget', 'description' => __('Tagcloud-Menü', 'fau') );
 		$this->WP_Widget('FAUMenuTagcloudWidget', 'Tagcloud-Menü', $widget_ops);
 	}
 
@@ -91,12 +91,12 @@ class FAUMenuTagcloudWidget extends WP_Widget
 		$menus = get_terms('nav_menu');
 		
 		echo '<p>';
-			echo '<label for="'.$this->get_field_id('title').'">Titel: </label>';
+			echo '<label for="'.$this->get_field_id('title').'">'. __('Titel', 'fau'). ': </label>';
 			echo '<input type="text" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" value="'.$title.'">';
 		echo '</p>';
 		
 		echo '<p>';
-			echo '<label for="'.$this->get_field_id('menu-slug').'">Menü: ';
+			echo '<label for="'.$this->get_field_id('menu-slug').'">' . __('Menü', 'fau') . ': ';
 				echo '<select id="'.$this->get_field_id('menu-slug').'" name="'.$this->get_field_name('menu-slug').'">';
 					foreach($menus as $item)
 					{
